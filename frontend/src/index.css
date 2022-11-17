@@ -11,5 +11,5 @@
 * {
   user-select: none;
   /* remove the below line to restore the cursor */
-  cursor: none;
+  /* cursor: none; */
 }

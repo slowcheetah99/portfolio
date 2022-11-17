@@ -9,8 +9,8 @@ export const screenshots = [
     image: home,
   },
   {
-    label: "ABOUT ME",
-    path: "/about-me",
+    label: "ABOUT",
+    path: "/about",
     image: about,
   },
   {

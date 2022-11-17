@@ -16,6 +16,7 @@ module.exports = {
         body: ["Georama", "sans-serif"],
         logo: ["Mystique", "sans-serif"],
         showcase: ["Space Grotesk", "sans-serif"],
+        showcase2: ["Major Mono Display", "monospace"],
       },
     },
   },

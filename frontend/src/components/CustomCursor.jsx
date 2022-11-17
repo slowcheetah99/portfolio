@@ -20,8 +20,8 @@ export default function CustomCursor() {
 
   return (
     <div
-      className={`absolute top-0 left-0 w-16 h-16 border-4 ${
-        projects ? " border-primary " : " border-tertiary "
+      className={`absolute top-0 left-0 w-8 h-8 border-4 ${
+        projects ? " bg-primary " : " bg-tertiary "
       } rounded-full -translate-1/2 transition-['all .1s cubic-bezier(0.43, 0.13, 0.23, 0.96)'] transition-[width, height, border] will-change-[width, height, transform, border] pointer-events-none z-[9999]`}
       style={{ left: `${cursorPosition.x}px`, top: `${cursorPosition.y}px` }}
     />

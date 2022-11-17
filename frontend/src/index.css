@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-stroke {
+  -webkit-text-stroke: 1px #bab8b8;
+  color: transparent;
+  font-size: 350px;
+}
+
+* {
+  user-select: none;
+  /* remove the below line to restore the cursor */
+  cursor: none;
+}

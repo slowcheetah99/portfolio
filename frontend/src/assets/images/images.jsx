@@ -5,43 +5,51 @@ import img4 from "./img4.jpg";
 
 export const images = [
   {
+    id: 0,
     url: img1,
     name: "Project Name",
     role: ["UI Designer"],
     year: "2022",
     duration: "2 Months",
     technologies: ["Figma", "Protopie"],
-    description: "lorem20",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     type: "web",
   },
   {
+    id: 1,
     url: img2,
     name: "Project Name 2",
     role: ["UI Designer", "Frontend Developer"],
     year: "2022",
     duration: "2 Months",
     technologies: ["Figma", "Astro", "TailwindCSS"],
-    description: "lorem30",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     type: "web",
   },
   {
+    id: 2,
     url: img3,
     name: "Project Name 3",
     role: ["UI Designer", "Frontend Developer"],
     year: "2022",
     duration: "2 Months",
     technologies: ["Figma", "React", "TailwindCSS"],
-    description: "lorem40",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     type: "web",
   },
   {
+    id: 3,
     url: img4,
     name: "Project Name 4",
     role: ["UI/UX Designer"],
     year: "2022",
     duration: "2 Months",
     technologies: ["Figma", "Figjam", "Google Docs"],
-    description: "lorem50",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     type: "ux",
   },
 ];

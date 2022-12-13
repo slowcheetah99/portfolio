@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 export default function CustomCursor() {
-  const projects = window.location.pathname.indexOf("projects") > -1;
+  const projects = window.location.pathname === "projects";
 
   const [cursorPosition, setCursorPosition] = useState({
     x: 400,

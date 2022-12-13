@@ -10,20 +10,67 @@ const skewTransition = {
 
 const fadeIn = {
   initial: {
+    // clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
+    // clipPath: "polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%)",
+    scale: 0.8,
+    x: -200,
     opacity: 0,
-    y: 0,
+    borderRadius: "1%",
+    border: "2px solid #1e1e1e",
   },
   animate: {
+    // clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+    x: 0,
+    scale: 1,
     opacity: 1,
-    y: -50,
+    borderRadius: "0%",
+    border: "0px",
     transition: {
-      duration: 1,
+      duration: 1.5,
       ease: [0.43, 0.13, 0.23, 0.96],
+      scale: {
+        delay: 1.5,
+        transition: {
+          duration: 1.5,
+          ease: [0.43, 0.13, 0.23, 0.96],
+        },
+      },
+      opacity: {
+        delay: 0.5,
+        transition: {
+          duration: 1.5,
+          ease: [0.43, 0.13, 0.23, 0.96],
+        },
+      },
     },
   },
   exit: {
-    opacity: 1,
-    y: -50,
+    // clipPath: "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)",
+    // clipPath: "polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%)",
+    scale: 0.8,
+    borderRadius: "1%",
+    x: -200,
+    opacity: 0,
+    border: "2px solid #ccc",
+    transition: {
+      duration: 1.5,
+      ease: [0.43, 0.13, 0.23, 0.96],
+
+      x: {
+        delay: 1.5,
+        transition: {
+          duration: 1.5,
+          ease: [0.43, 0.13, 0.23, 0.96],
+        },
+      },
+      opacity: {
+        delay: 1.6,
+        transition: {
+          duration: 1.5,
+          ease: [0.43, 0.13, 0.23, 0.96],
+        },
+      },
+    },
   },
 };
 

@@ -7,25 +7,27 @@ import { Link } from "react-router-dom";
 
 import logoDark from "../assets/icons/logo.svg";
 import logoLight from "../assets/icons/mini.svg";
-export default function Navbar({ setOpen }) {
-  const projects = window.location.pathname.indexOf("projects") > -1;
-  const fadeIn = {
-    initial: {
-      y: 400,
-    },
-    animate: {
-      y: 0,
-      transition: { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.96] },
-    },
-  };
+export default function Navbar({ setOpen, inView }) {
+  // const projects = window.location.pathname.indexOf("projects") > -1;
+  const projects = window.location.pathname === "/projects";
   return (
     <motion.div
-      variants={fadeIn}
-      className="w-full h-fit flex justify-between pb-4 items-center z-50 relative"
+      className="w-full h-fit flex justify-between pb-4 items-center z-50 relative pl-3 pr-6"
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        transition: {
+          delay: 1.5,
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+      }}
     >
       <Link to="/">
         <img
-          src={projects ? logoLight : logoDark}
+          src={!projects ? logoDark : inView ? logoLight : logoDark}
           alt="Logo"
           className="w-12 h-12"
         />

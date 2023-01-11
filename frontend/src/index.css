@@ -1,6 +1,16 @@
-@import url("./assets/fonts/Matter-Regular.ttf");
-@import url("./assets/fonts/Matter-Bold.ttf");
-@import url("./assets/fonts/Austra.ttf");
+@font-face {
+  font-family: "Matter";
+  font-weight: 400;
+  font-style: normal;
+  src: url("./assets/fonts/Matter-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Austra";
+  font-size: 400;
+  font-style: normal;
+  src: url("./assets/fonts/Austra.ttf");
+}
 
 @tailwind base;
 @tailwind components;

@@ -21,12 +21,12 @@
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "role": {
       "type": "json",
@@ -58,25 +58,35 @@
       "type": "text",
       "required": true
     },
-    "designChoices": {
-      "type": "text",
-      "required": true
-    },
-    "stackChoices": {
-      "type": "text",
-      "required": true
-    },
-    "milestones": {
-      "type": "json",
-      "required": true
-    },
-    "features": {
-      "type": "json",
-      "required": true
-    },
     "conclusion": {
       "type": "text",
       "required": true
+    },
+    "color": {
+      "type": "string",
+      "required": true
+    },
+    "background": {
+      "type": "string",
+      "required": true
+    },
+    "feature_ids": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::feature.feature",
+      "mappedBy": "project_id"
+    },
+    "milestone_ids": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::milestone.milestone",
+      "mappedBy": "project_id"
+    },
+    "stack_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::stack-choice.stack-choice",
+      "inversedBy": "projects"
     }
   }
 }

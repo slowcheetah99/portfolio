@@ -13,10 +13,11 @@ module.exports = {
         blur2: "rgba(0, 0, 0, 0.75)",
       },
       fontFamily: {
-        body: ["Georama", "sans-serif"],
+        body: ["Matter", "sans-serif"],
         logo: ["Mystique", "sans-serif"],
         showcase: ["Space Grotesk", "sans-serif"],
-        showcase2: ["Major Mono Display", "monospace"],
+        showcase2: "Zevida",
+        polaroid: "Austra",
       },
     },
   },

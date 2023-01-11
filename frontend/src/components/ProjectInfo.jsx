@@ -3,11 +3,13 @@ import { useProjectContext } from "../hooks/useProjectContext";
 
 const items = {
   initial: {
-    y: 10,
+    y: 50,
+    translateZ: -200,
     opacity: 0,
   },
   animate: {
     y: 0,
+    translateZ: 0,
     opacity: 1,
     transition: {
       ease: [0.6, 0.01, -0.05, 0.95],
@@ -15,7 +17,8 @@ const items = {
     },
   },
   exit: {
-    y: -10,
+    y: 50,
+    translateZ: 200,
     opacity: 0,
     transition: {
       ease: "easeInOut",
@@ -28,8 +31,7 @@ export default function ProjectInfo({ project }) {
 
   return (
     <motion.div
-      className="w-32 h-full rounded-md overflow-hidden cursor-pointer"
-      // onClick={() => handleProject(i)}
+      className="w-32 h-20 rounded-sm overflow-hidden cursor-pointer"
       onClick={() => {
         dispatch({
           type: "CHANGE_PROJECT",
@@ -38,7 +40,11 @@ export default function ProjectInfo({ project }) {
       }}
       variants={items}
     >
-      <img src={project.url} alt="project-image" />
+      <img
+        src={project.attributes.image.data.attributes.url}
+        alt="project-image"
+        className="object-cover object-left-top w-full h-full"
+      />
     </motion.div>
   );
 }

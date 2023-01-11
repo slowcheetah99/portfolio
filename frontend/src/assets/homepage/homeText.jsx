@@ -12,7 +12,7 @@ export const text = [
     alt: "user interface designer image",
   },
   {
-    label: "MONDAY MAN",
+    label: "PROBLEM SOLVER",
     image: images[2].url,
     alt: "lover of mondays",
   },

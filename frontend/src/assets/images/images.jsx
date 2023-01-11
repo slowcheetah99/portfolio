@@ -15,6 +15,8 @@ export const images = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     type: "web",
+    color: "#2f3f50",
+    background: "#cfd8e3",
   },
   {
     id: 1,
@@ -27,6 +29,8 @@ export const images = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     type: "web",
+    color: "#47522d",
+    background: "#dde4ce",
   },
   {
     id: 2,
@@ -39,6 +43,8 @@ export const images = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     type: "web",
+    color: "#5a611e",
+    background: "#e9edc5",
   },
   {
     id: 3,
@@ -51,5 +57,7 @@ export const images = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     type: "ux",
+    color: "#1A2330",
+    background: "#cdd7e4",
   },
 ];

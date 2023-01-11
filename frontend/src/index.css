@@ -2,16 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-.text-stroke {
-  -webkit-text-stroke: 1px #bab8b8;
-  color: transparent;
-  font-size: 350px;
-}
-
-* {
+*,
+*::after,
+*::before {
   user-select: none;
+  /* font-family: "Matter"; */
   /* remove the below line to restore the cursor */
   /* cursor: none; */
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 }
 
 *::-webkit-scrollbar {

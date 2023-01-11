@@ -1,6 +1,4 @@
 import { createContext, useReducer } from "react";
-import { images as projects } from "../assets/images/images";
-
 export const ProjectContext = createContext();
 
 export function ProjectReducer(state, action) {
@@ -8,16 +6,31 @@ export function ProjectReducer(state, action) {
     case "CHANGE_PROJECT":
       return {
         ...state,
-        currentProject: projects[action.payload],
+        currentProject: state.projects[action.payload],
+      };
+    case "SET_PROJECTS":
+      return {
+        ...state,
+        projects: action.payload,
+      };
+    case "CURRENT_PROJECT":
+      return {
+        ...state,
+        currentProject: action.payload,
+      };
+    default:
+      return {
+        ...state,
       };
   }
 }
 
 export default function ProjectProvider({ children }) {
   const [state, dispatch] = useReducer(ProjectReducer, {
-    currentProject: projects[0],
-    projects,
+    currentProject: {},
+    projects: [],
   });
+
   return (
     <ProjectContext.Provider value={{ ...state, dispatch }}>
       {children}

@@ -6,9 +6,12 @@ import { CustomCursor, Navbar } from "./components";
 import { AnimatePresence } from "framer-motion";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
+const IS_DEVELOPMENT = import.meta.env.MODE === "development";
 //apollo client
 const client = new ApolloClient({
-  uri: "http://localhost:1337/graphql",
+  uri: IS_DEVELOPMENT
+    ? "http://localhost:1337/graphql"
+    : "https://56f3-102-140-210-249.eu.ngrok.io/graphql",
   cache: new InMemoryCache(),
 });
 function App() {

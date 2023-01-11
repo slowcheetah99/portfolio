@@ -10,8 +10,8 @@ const IS_DEVELOPMENT = import.meta.env.MODE === "development";
 //apollo client
 const client = new ApolloClient({
   uri: IS_DEVELOPMENT
-    ? "http://localhost:1337/graphql"
-    : "https://56f3-102-140-210-249.eu.ngrok.io/graphql",
+    ? import.meta.env.VITE_DEV_PROXY
+    : import.meta.env.VITE_PROD_PROXY,
   cache: new InMemoryCache(),
 });
 function App() {

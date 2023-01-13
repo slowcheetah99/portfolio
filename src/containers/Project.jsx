@@ -222,7 +222,7 @@ export default function Project({ inView, setInView }) {
               <div className="flex flex-row gap-x-4 mt-6 w-full">
                 {project?.features?.map((item, i) => (
                   <motion.img
-                    src={`/public/${item?.image}`}
+                    src={`/${item?.image}`}
                     alt={item?.name}
                     key={item?.name}
                     className="md:w-20 w-16 h-12 md:h-10 object-cover object-center"
@@ -259,7 +259,7 @@ export default function Project({ inView, setInView }) {
               style={{ outlineColor: project?.color }}
             >
               <motion.img
-                src={`/public/${project?.image}`}
+                src={`/${project?.image}`}
                 alt={project?.name}
                 className="w-full h-[80%] object-cover object-left-top"
                 initial={{

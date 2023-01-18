@@ -53,6 +53,10 @@ body {
   animation: camerapan 1s infinite ease-in-out;
 }
 
+.text-stroke {
+  -webkit-text-stroke: 2px #f3eee7;
+}
+
 @keyframes camerapan {
   0% {
     object-position: 30% 0%;

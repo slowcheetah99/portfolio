@@ -1,4 +1,4 @@
-import { About, Header, Project, Projects } from "./containers";
+import { About, Header, Project, Projects, Loading } from "./containers";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ProjectProvider from "./context/ProjectsContext";
@@ -14,12 +14,13 @@ function App() {
 
   useEffect(() => {
     setPointers(true);
-    setLoading(true);
   }, []);
   const imageDetails = {
     width: 300,
     height: 205,
   };
+
+  if (loading) return <Loading setLoading={setLoading} />;
   return (
     <div
       className={`bg-slate-100 outline outline-offset-8 outline-secondary h-screen w-screen md:overflow-hidden px-20 pt-4 relative ${
@@ -61,6 +62,7 @@ function App() {
             path="/projects/:id"
             element={<Project inView={inView} setInView={setInView} />}
           />
+          {/* <Route path="/load" element={<Loading />} /> */}
         </Routes>
       </AnimatePresence>
     </div>

@@ -1,9 +1,15 @@
 import { icons } from "../assets/icons/icons";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fadeIn } from "../constants/framerVariants";
 import { GrFormNextLink as LinkArrow } from "react-icons/gr";
 import { useState } from "react";
+import { FiFigma as Figma } from "react-icons/fi";
+import { SiAdobexd as XD } from "react-icons/si";
+import { FaReact as React } from "react-icons/fa";
+import { BsInfo as Info } from "react-icons/bs";
+import { VscTools as Tools } from "react-icons/vsc";
+import { GrDocumentPdf as PDF } from "react-icons/gr";
+import { GrContact as Contact } from "react-icons/gr";
+import JsFileDownloader from "js-file-downloader";
 
 const strokeOut = {
   initial: { pathLength: 1, strokeWidth: 400, scale: 1.5 },
@@ -68,6 +74,7 @@ const slideUp = {
 export default function About() {
   const [navId, setNavId] = useState(0);
   const [show, setShow] = useState(false);
+  const resumeUrl = "/docs/resume2.pdf";
   const nav = [
     {
       id: 0,
@@ -86,15 +93,44 @@ export default function About() {
       label: "contact me",
     },
   ];
+
+  const services = [
+    {
+      tool: <Figma />,
+      work: "UI Design",
+    },
+    {
+      tool: <XD />,
+      work: "UX Design",
+    },
+    {
+      tool: <React />,
+      work: "Frontend Development",
+    },
+  ];
+
+  function handleResume(e) {
+    e.preventDefault();
+    new JsFileDownloader({
+      url: resumeUrl,
+      timeout: 5000,
+    })
+      .then(() => {
+        console.log("done");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <motion.div
-      className={`absolute top-0 left-0 mt-6 mb-0 border-2 border-secondary/50 mx-6 w-[96vw] h-[76.5vh] pt-20 bg-primary overflow-hidden`}
+      className={`absolute top-0 left-0 mt-6 mb-0 border-2 border-secondary/50 mx-6 w-[96vw] h-[76.5vh] bg-primary overflow-hidden`}
       initial="initial"
       animate="animate"
       exit="exit"
     >
       {/* div to hold contents that are not the svg */}
-      <div className="relative z-50">
+      <div className="relative z-50 h-full">
         {show && (
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -103,8 +139,9 @@ export default function About() {
             transition={{
               ...skewTransition,
             }}
+            className="h-full flex"
           >
-            <div className="flex flex-col gap-y-4 w-fit ml-24">
+            <div className="flex flex-col gap-y-4 w-1/6 h-fit justify-center ml-24 mt-12">
               {nav.map((item) => (
                 <NavEl
                   item={item}
@@ -114,7 +151,141 @@ export default function About() {
                 />
               ))}
             </div>
+            <div className="w-5/6 h-full flex">
+              <div className="h-full w-1/4 relative">
+                <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-x-2 border-secondary/20">
+                  <p className="absolute top-20 uppercase font-showcase font-black -right-10/12 -rotate-90 text-9xl text-secondary">
+                    {nav[0].label}
+                    <div className="absolute top-0 w-56 h-56 bg-primary rounded-full -z-10 bg-secondary/20" />
+                  </p>
+                  <Info className="absolute -bottom-12 -left-12 text-9xl fill-secondary/50 border-2 border-secondary/50 rounded-full" />
+                </div>
+                {navId === 0 && (
+                  <motion.div
+                    className="animate__visible absolute top-10 border-t-2 border-l-2 border-secondary/30 rounded-t-lg px-5 pt-20 left-0 w-full h-full bg-primary"
+                    initial={{ y: "200%" }}
+                    animate={{ y: "0%" }}
+                    exit={{ y: "-200%" }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.43, 0.13, 0.23, 0.96],
+                    }}
+                  >
+                    <p className="font-body font-light">
+                      Robert Gardner is a front-end developer and all-around
+                      design enthusiast. He believes in coding best practices,
+                      standards and accessibility conscience design, crafting
+                      cohesive and intuitive user experiences along the way.
+                    </p>
+                  </motion.div>
+                )}
+              </div>
+              <div className="h-full w-1/4 relative bg-primary border-r-2 border-secondary/20">
+                <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-x-2 border-secondary/20">
+                  <p className="absolute top-0 uppercase font-showcase font-black -left-1/2 -rotate-90 text-9xl text-secondary">
+                    {nav[1].label}
+                    <div className="absolute top-0 w-56 h-56 bg-primary rounded-full -z-10 bg-secondary/20" />
+                  </p>
+                  <Tools className="absolute -bottom-12 -left-12 text-9xl p-4 fill-secondary/50 border-2 border-secondary/50 rounded-full" />
+                </div>
+                {navId === 1 && (
+                  <motion.div
+                    className="animate__visible absolute top-10 border-t-2 border-secondary/30 rounded-t-lg pt-20 left-0 w-full h-full bg-primary"
+                    initial={{ y: "200%" }}
+                    animate={{ y: "0%" }}
+                    exit={{ y: "-200%" }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.43, 0.13, 0.23, 0.96],
+                    }}
+                  >
+                    {services.map((service, i) => (
+                      <div
+                        className="flex gap-x-4 items-center border-b-2 border-secondary mx-4 mb-4 pb-2"
+                        key={service.work}
+                      >
+                        <span className="text-xl text-secondary">
+                          {service.tool}
+                        </span>
+                        <p
+                          className="py-2 uppercase font-medium text-secondary text-base font-body"
+                          key={i}
+                        >
+                          {service.work}
+                        </p>
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+              </div>
+              <div className="h-full w-1/4 relative">
+                <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-r-2 border-secondary/20 bg-primary">
+                  <p className="absolute top-0 uppercase font-showcase font-black -left-1/3 -rotate-90 text-9xl text-secondary">
+                    {nav[2].label}
+                    <div className="absolute top-0 w-56 h-56 bg-secondary/20 rounded-full -z-10" />
+                  </p>
+                  <PDF className="absolute -bottom-12 -left-12 text-9xl opacity-50" />
+                </div>
+                {navId === 2 && (
+                  <motion.div
+                    className="animate__visible absolute bottom-0 left-0 w-full h-fit bg-primary"
+                    initial={{ y: "200%" }}
+                    animate={{ y: "0%" }}
+                    exit={{ y: "-200%" }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.43, 0.13, 0.23, 0.96],
+                    }}
+                  >
+                    <button
+                      type="button"
+                      className="w-full h-12 grid place-items-center bg-secondary text-primary font-showcase uppercase"
+                      onClick={handleResume}
+                    >
+                      Resume
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+              <div className="h-full w-1/4 relative bg-primary">
+                <div className="initial__visible absolute top-0 left-0 w-full h-full">
+                  <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden">
+                    <p className="absolute top-0 uppercase font-showcase font-black -left-1/4 -rotate-90 text-9xl text-secondary">
+                      {nav[3].label}
+                      <div className="absolute top-0 w-56 h-56 bg-secondary/20 rounded-full -z-10" />
+                    </p>
+                    <Contact className="absolute -bottom-12 -left-12 text-9xl opacity-50" />
+                  </div>
+                </div>
+                {navId === 3 && (
+                  <motion.div
+                    className="animate__visible absolute top-10 border-t-2 border-secondary/30 rounded-t-lg pl-10 pt-20 left-0 w-full h-full bg-primary"
+                    initial={{ y: "200%" }}
+                    animate={{ y: "0%" }}
+                    exit={{ y: "-200%" }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.43, 0.13, 0.23, 0.96],
+                    }}
+                  >
+                    {icons.map((icon, i) => (
+                      <a
+                        href={icon.path}
+                        className="py-2 flex"
+                        key={icon.label}
+                      >
+                        <span className="uppercase font-medium text-secondary text-base font-showcase">
+                          {icon.label}
+                        </span>
+                        <LinkArrow className="text-2xl text-primary -rotate-45" />
+                      </a>
+                    ))}
+                  </motion.div>
+                )}
+              </div>
+            </div>
 
+            {/* 
             <div className="flex flex-col gap-y-2 w-fit ml-24 mt-8">
               {icons.map((icon, i) => (
                 <a href={icon.path} className="py-2 flex" key={icon.label}>
@@ -124,7 +295,7 @@ export default function About() {
                   <LinkArrow className="text-2xl text-primary -rotate-45" />
                 </a>
               ))}
-            </div>
+            </div> */}
           </motion.div>
         )}
       </div>

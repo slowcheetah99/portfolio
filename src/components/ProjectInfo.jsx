@@ -27,11 +27,13 @@ const items = {
   },
 };
 export default function ProjectInfo({ project }) {
-  const { dispatch } = useProjectContext();
-
+  const { dispatch, currentProject } = useProjectContext();
+  const isActive = project?.id === currentProject?.id;
   return (
     <motion.div
-      className="w-32 h-20 rounded-sm overflow-hidden cursor-pointer"
+      className={`w-32 h-16 rounded-sm overflow-hidden cursor-pointer transition-all ${
+        isActive ? " outline outline-2 outline-primary outline-offset-4" : " "
+      }`}
       onClick={() => {
         dispatch({
           type: "CHANGE_PROJECT",
@@ -41,7 +43,7 @@ export default function ProjectInfo({ project }) {
       variants={items}
     >
       <img
-        src={project?.image}
+        src={project?.image?.sm}
         alt="project-image"
         className="object-cover object-left-top w-full h-full"
       />

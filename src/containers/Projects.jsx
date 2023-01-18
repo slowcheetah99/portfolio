@@ -119,8 +119,6 @@ export default function Work() {
     });
   }, [items]);
 
-  if (loading) return <p>Loading...</p>;
-
   function handleProject(i) {
     dispatch({
       type: "CHANGE_PROJECT",
@@ -164,43 +162,49 @@ export default function Work() {
         <div className="absolute top-0 left-0 w-full h-full bg-secondary/40 z-10" />
         {show && (
           <div>
-            <motion.button
-              className="bg-[#111] text-primary text-sm md:text-md px-4 py-2 z-50 absolute bottom-20 md:bottom-16 right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-20"
-              onClick={viewProject}
-              variants={fadeUp}
-            >
-              View Project
-            </motion.button>
-            <motion.div
-              className="w-fit"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-            >
-              {projects?.map((project, i) => (
-                <ProjectImage
-                  project={project}
-                  key={project.id}
-                  visible={visible}
-                  i={i}
-                  prev={prev}
-                />
-              ))}
-            </motion.div>
-            <motion.div
-              className="absolute bottom-28 lg:right-20 lg:translate-x-0 right-1/2 translate-x-1/2 flex gap-x-4 z-10 items-center"
-              variants={fadeInStagger}
-            >
-              {projects?.map((project, i) => (
-                <ProjectInfo
-                  project={project}
-                  i={i}
-                  handleProject={handleProject}
-                  key={project?.name}
-                />
-              ))}
-            </motion.div>
+            {loading ? (
+              <p>Loading</p>
+            ) : (
+              <>
+                <motion.button
+                  className="bg-[#111] text-primary text-sm md:text-md px-4 py-2 z-50 absolute bottom-20 md:bottom-16 right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-20"
+                  onClick={viewProject}
+                  variants={fadeUp}
+                >
+                  View Project
+                </motion.button>
+                <motion.div
+                  className="w-fit"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                  {projects?.map((project, i) => (
+                    <ProjectImage
+                      project={project}
+                      key={project.id}
+                      visible={visible}
+                      i={i}
+                      prev={prev}
+                    />
+                  ))}
+                </motion.div>
+                <motion.div
+                  className="absolute bottom-28 lg:right-20 lg:translate-x-0 right-1/2 translate-x-1/2 flex gap-x-4 z-10 items-center"
+                  variants={fadeInStagger}
+                >
+                  {projects?.map((project, i) => (
+                    <ProjectInfo
+                      project={project}
+                      i={i}
+                      handleProject={handleProject}
+                      key={project?.name}
+                    />
+                  ))}
+                </motion.div>
+              </>
+            )}
           </div>
         )}
       </div>

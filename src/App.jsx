@@ -1,4 +1,4 @@
-import { About, Header, Project, Projects, AboutMe } from "./containers";
+import { About, Header, Project, Projects } from "./containers";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ProjectProvider from "./context/ProjectsContext";
@@ -61,7 +61,6 @@ function App() {
             path="/projects/:id"
             element={<Project inView={inView} setInView={setInView} />}
           />
-          <Route path="/about-me" element={<AboutMe />} />
         </Routes>
       </AnimatePresence>
     </div>

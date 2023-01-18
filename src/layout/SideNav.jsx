@@ -33,12 +33,14 @@ export default function SideNav({ inView, project }) {
         </div>
       </div>
 
-      <button
-        className="grid place-items-center w-fit px-6 py-3 bg-primary font-body font-bold text-sm rounded-sm"
+      <a
+        href={project.link}
+        target="_blank"
+        className="grid place-items-center w-fit px-6 py-3 bg-primary font-body font-bold text-sm rounded-sm cursor-pointer"
         style={{ color: project?.color }}
       >
         {project?.type === "web" ? "View Site" : "View Case Study"}
-      </button>
+      </a>
     </div>
   );
 }

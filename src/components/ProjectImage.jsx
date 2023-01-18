@@ -43,11 +43,11 @@ export default function ProjectImage({ project, visible, i, prev }) {
   return (
     <div>
       <motion.img
-        src={project.image}
+        src={project.image.lg}
         custom={prev}
         animate={{
           zIndex: active ? 1 : prev === i ? 1 : -10,
-          x: active ? "0%" : currentProject?.id > i ? "-100%" : "100%",
+          y: active ? "0%" : currentProject?.id > i ? "-100%" : "100%",
           opacity: active ? 1 : prev === i ? 1 : 0.8,
           // clipPath: active ? "inset(0% 0% 0% 0%)" : "inset(0% 100% 0% 100%)",
         }}
@@ -61,7 +61,7 @@ export default function ProjectImage({ project, visible, i, prev }) {
           },
         }}
         alt={project?.name}
-        className="absolute top-0 left-0 w-full h-[90%] object-cover object-left-top"
+        className="absolute top-0 left-0 w-full h-[90%] object-cover project-img"
         key={project.id}
       />
       <div className="w-full h-[10%] bg-white absolute bottom-0 z-50 flex justify-center items-center">

@@ -5,7 +5,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useServer } from "../hooks";
-
+import {
+  NavIntro,
+  NavFeatures,
+  NavMilestones,
+  NavConclusion,
+} from "../components/NavEls";
 const strokeOut = {
   initial: { pathLength: 1, strokeWidth: 400, scale: 1.5 },
   animate: {
@@ -78,13 +83,30 @@ export default function Project({ inView, setInView }) {
   const navigate = useNavigate();
   const { items } = useServer();
   const projects = items;
-
   const [show, setShow] = useState(false);
 
   const project =
     location?.state?.project ||
     JSON.parse(localStorage.getItem("CURRENT_PROJECT"));
-
+  const nav = [
+    {
+      link: "intro",
+      element: <NavIntro project={project} />,
+    },
+    {
+      link: "features",
+      element: <NavFeatures project={project} />,
+    },
+    {
+      link: "milestones",
+      element: <NavMilestones project={project} />,
+    },
+    {
+      link: "conclusion",
+      element: <NavConclusion project={project} />,
+    },
+  ];
+  const [navItem, setNavItem] = useState(nav[0]);
   function handleView() {
     setInView((state) => !state);
   }
@@ -112,6 +134,7 @@ export default function Project({ inView, setInView }) {
       });
     }
   }
+
   return (
     <motion.div
       className={`absolute top-0 left-0 w-[96vw] mx-6 mt-6 h-[76.5vh] px-8 md:px-20 overflow-x-hidden border-2 border-secondary/50 overflow-y-hidden`}
@@ -124,7 +147,7 @@ export default function Project({ inView, setInView }) {
       <div className="relative z-50 w-full h-[100%]">
         {show && (
           <motion.div
-            className="lg:flex justify-between mt-4 md:mt-24 lg:mt-12 h-[90%] w-full relative overflow-hidden"
+            className="lg:flex justify-between mt-4 md:mt-24 lg:mt-6 h-[90%] w-full relative overflow-hidden"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
@@ -134,173 +157,51 @@ export default function Project({ inView, setInView }) {
             }}
           >
             <div className="flex flex-col w-full items-start relative">
-              <motion.h1
-                className="text-3xl md:text-6xl font-body font-black whitespace-nowrap mb-6 w-full"
-                style={{ color: project?.color }}
-                initial={{
-                  y: 20,
-                  opacity: 0,
-                }}
-                animate={{
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                    delay: 0,
-                  },
-                }}
-                exit={{
-                  y: 20,
-                  opacity: 0,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                    delay: 0,
-                  },
-                }}
-              >
-                {project?.name}
-              </motion.h1>
+              <div className="w-full h-full">{navItem.element}</div>
 
-              <motion.h3
-                className="text-2xl font-body mb-2 font-bold"
-                style={{ color: project?.color }}
-                initial={{
-                  y: 20,
-                  opacity: 0,
-                }}
-                animate={{
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                    delay: 0.15,
-                  },
-                }}
-                exit={{
-                  y: 20,
-                  opacity: 0,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                    delay: 0.15,
-                  },
-                }}
-              >
-                Project Subtitle
-              </motion.h3>
-              <motion.p
-                className="w-full text-secondary font-body text-sm md:text-2xl lg:text-base"
-                initial={{
-                  y: 20,
-                  opacity: 0,
-                }}
-                animate={{
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                    delay: 0.3,
-                  },
-                }}
-                exit={{
-                  y: 20,
-                  opacity: 0,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.43, 0.13, 0.23, 0.96],
-                    delay: 0.3,
-                  },
-                }}
-              >
-                {project?.description}
-              </motion.p>
-
-              <div className="flex flex-row gap-x-4 mt-6 w-full">
-                {project?.features?.map((item, i) => (
-                  <motion.img
-                    src={`/${item?.image}`}
-                    alt={item?.name}
-                    key={item?.name}
-                    className="md:w-20 w-16 h-12 md:h-10 object-cover object-center"
-                    variants={items}
-                    initial={{
-                      y: 20,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      y: 0,
-                      opacity: 1,
-                      transition: {
-                        duration: 0.5,
-                        ease: [0.43, 0.13, 0.23, 0.96],
-                        delay: 0.1 * i,
-                      },
-                    }}
-                    exit={{
-                      y: 20,
-                      opacity: 0,
-                      transition: {
-                        duration: 0.5,
-                        ease: [0.43, 0.13, 0.23, 0.96],
-                        delay: 0.1 * i,
-                      },
-                    }}
-                  />
-                ))}
+              <div className="flex gap-x-2 w-full h-fit -mt-20 mb-6">
+                {nav.map((item, i) => {
+                  const isActive = item.link === navItem.link;
+                  return (
+                    <div
+                      className="w-fit cursor-pointer p-2"
+                      onClick={() => setNavItem(item)}
+                      key={i}
+                    >
+                      <motion.p
+                        className="font-showcase font-bold text-secondary uppercase text-base"
+                        animate={{ opacity: isActive ? 1 : 0.5 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                      >
+                        {item.link}
+                      </motion.p>
+                      <motion.div
+                        className="h-[2px] bg-secondary"
+                        animate={{ width: isActive ? "100%" : "0%" }}
+                      />
+                    </div>
+                  );
+                })}
               </div>
-            </div>
 
-            <div
-              className="w-full md:w-9/12 lg:w-full h-1/2 bg-white lg:h-[55vh] absolute top-0 mt-6 right-0 md:ml-40 mr-2 md:relative px-4 pt-4 outline-2 outline"
-              style={{ outlineColor: project?.color }}
-            >
-              <motion.img
-                src={`/${project?.image}`}
-                alt={project?.name}
-                className="w-full h-[80%] object-cover object-left-top"
-                initial={{
-                  clipPath: "inset(0% 0% 0% 100%)",
-                }}
-                animate={{
-                  clipPath: "inset(0% 0% 0% 0%)",
-                }}
-                exit={{
-                  clipPath: "inset(0% 0% 0% 100%)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.17, 0.55, 0.55, 1],
-                }}
-              />
-              <h3
-                className="text-center font-polaroid text-3xl mt-4"
-                style={{ color: project?.color }}
-              >
-                {project?.name}
-              </h3>
-            </div>
-
-            <div className="absolute bottom-2 left-0 flex justify-between  w-full h-fit items-center">
-              <motion.button
-                className="font-bold px-4 -ml-4 py-2 font-body text-lg relative disabled:opacity-75"
-                style={{ color: project?.color }}
-                onClick={handlePrev}
-                disabled={project?.id === 0}
-              >
-                &larr; &nbsp; Previous Project
-              </motion.button>
-              <motion.button
-                className="font-bold -mr-4 px-4 py-2 font-body text-lg relative disabled:opacity-75"
-                style={{ color: project?.color }}
-                onClick={handleNext}
-                disabled={project?.id === projects?.length - 1}
-              >
-                Next Project &nbsp; &rarr;
-              </motion.button>
+              <div className="w-full flex justify-between">
+                <motion.button
+                  className="font-bold px-4 -ml-4 py-2 font-body text-lg relative disabled:opacity-75"
+                  style={{ color: project?.color }}
+                  onClick={handlePrev}
+                  disabled={project?.id === 0}
+                >
+                  &larr; &nbsp; Previous Project
+                </motion.button>
+                <motion.button
+                  className="font-bold -mr-4 px-4 py-2 font-body text-lg relative disabled:opacity-75"
+                  style={{ color: project?.color }}
+                  onClick={handleNext}
+                  disabled={project?.id === projects?.length - 1}
+                >
+                  Next Project &nbsp; &rarr;
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         )}

@@ -33,7 +33,7 @@ export default function Navbar({ open, setOpen }) {
       {/* <BottomNav setOpen={setOpen} /> */}
       <div className="w-full h-fit flex justify-between pb-2 pt-6 md:py-4 items-center font-bold">
         <Link to="/" className="hover:scale-105 transition-all">
-          <span className="text-md font-base uppercase font-polaroid text-3xl">
+          <span className="text-md font-base uppercase font-polaroid text-2xl">
             Robert Okusi
           </span>
         </Link>
@@ -44,11 +44,13 @@ export default function Navbar({ open, setOpen }) {
           ))}
         </div>
 
-        <motion.button
-          className="transition-all relative text-md w-fit h-6 px-8 overflow-hidden py-6 items-center flex  rounded-sm text-3xl text-secondary font-base font-polaroid 
+        <motion.a
+          className="transition-all relative text-md w-fit h-6 px-8 overflow-hidden py-6 items-center flex  rounded-sm text-2xl text-secondary font-base font-polaroid 
           "
           onMouseEnter={() => setShow(true)}
           onMouseOut={() => setShow(false)}
+          href="mailto:rgaronerdev@gmail.com"
+          target="_blank"
           whileHover={{
             y: -4,
           }}
@@ -59,7 +61,7 @@ export default function Navbar({ open, setOpen }) {
         >
           HIRE ME
           <LinkArrow className="text-4xl text-secondary -rotate-45" />
-        </motion.button>
+        </motion.a>
       </div>
     </motion.div>
   );
@@ -71,7 +73,7 @@ function NavEl({ item, pathname }) {
     <Link
       to={item.path}
       key={item.label}
-      className="relative w-full h-fit text-secondary font-polaroid text-3xl"
+      className="relative w-full h-fit text-secondary font-polaroid text-2xl"
     >
       {item.label}
       <svg

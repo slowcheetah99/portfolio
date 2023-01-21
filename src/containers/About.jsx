@@ -124,7 +124,7 @@ export default function About() {
   }
   return (
     <motion.div
-      className={`absolute top-0 left-0 mt-6 mb-0 border-2 border-secondary/50 mx-6 w-[96vw] h-[76.5vh] bg-primary overflow-hidden`}
+      className={`absolute top-0 left-0 mt-0 lg:mt-6 mb-0 border-2 border-secondary/50 mx-0 lg:mx-6 w-full lg:w-[96.5vw] h-[81.5vh] bg-primary overflow-hidden`}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -139,9 +139,9 @@ export default function About() {
             transition={{
               ...skewTransition,
             }}
-            className="h-full flex"
+            className="h-full flex flex-col lg:flex-row"
           >
-            <div className="flex flex-col gap-y-4 w-1/6 h-fit justify-center ml-24 mt-12">
+            <div className="flex flex-row lg:flex-col justify-between lg:gap-y-4 w-full lg:w-1/6 h-fit lg:justify-center ml-0 lg:ml-24 lg:mt-12 p-4 md:p-8 lg:p-0 border-2 border-secondary/20 lg:border-none">
               {nav.map((item) => (
                 <NavEl
                   item={item}
@@ -151,10 +151,10 @@ export default function About() {
                 />
               ))}
             </div>
-            <div className="w-5/6 h-full flex">
-              <div className="h-full w-1/4 relative">
+            <div className="sm:w-full lg:w-5/6 h-full flex flex-col md:flex-row md:flex-wrap">
+              <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative border-b-2 border-secondary/20 lg:border-none">
                 <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-x-2 border-secondary/20">
-                  <p className="absolute top-20 uppercase font-showcase font-black -right-10/12 -rotate-90 text-9xl text-secondary">
+                  <p className="absolute top-20 uppercase font-showcase font-black -right-36 lg:-right-10/12 -rotate-90 text-9xl text-secondary">
                     {nav[0].label}
                     <div className="absolute top-0 w-56 h-56 bg-primary rounded-full -z-10 bg-secondary/20" />
                   </p>
@@ -162,7 +162,7 @@ export default function About() {
                 </div>
                 {navId === 0 && (
                   <motion.div
-                    className="animate__visible absolute top-10 border-t-2 border-l-2 border-secondary/30 rounded-t-lg px-5 pt-20 left-0 w-full h-full bg-primary"
+                    className="animate__visible absolute top-0 md:top-1/2 lg:top-10 border-t-2 border-l-2 border-secondary/30 rounded-t-lg px-5 pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}
@@ -180,9 +180,9 @@ export default function About() {
                   </motion.div>
                 )}
               </div>
-              <div className="h-full w-1/4 relative bg-primary border-r-2 border-secondary/20">
+              <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative bg-primary lg:border-r-2 border-b-2 border-secondary/20 lg:border-b-none">
                 <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-x-2 border-secondary/20">
-                  <p className="absolute top-0 uppercase font-showcase font-black -left-1/2 -rotate-90 text-9xl text-secondary">
+                  <p className="absolute top-0 uppercase font-showcase font-black lg:-left-1/2 -right-64  -rotate-90 text-9xl text-secondary">
                     {nav[1].label}
                     <div className="absolute top-0 w-56 h-56 bg-primary rounded-full -z-10 bg-secondary/20" />
                   </p>
@@ -190,7 +190,7 @@ export default function About() {
                 </div>
                 {navId === 1 && (
                   <motion.div
-                    className="animate__visible absolute top-10 border-t-2 border-secondary/30 rounded-t-lg pt-20 left-0 w-full h-full bg-primary"
+                    className="animate__visible absolute top-0 md:top-1/2 lg:top-10 border-t-2 border-secondary/30 rounded-t-lg pt-0 md:pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}
@@ -201,7 +201,7 @@ export default function About() {
                   >
                     {services.map((service, i) => (
                       <div
-                        className="flex gap-x-4 items-center border-b-2 border-secondary mx-4 mb-4 pb-2"
+                        className="flex gap-x-4 items-center border-b-2 border-secondary mx-1 lg:mx-4 mb-1 lg:mb-4 pb-2"
                         key={service.work}
                       >
                         <span className="text-xl text-secondary">
@@ -218,9 +218,9 @@ export default function About() {
                   </motion.div>
                 )}
               </div>
-              <div className="h-full w-1/4 relative">
+              <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative bg-primary lg:border-r-2 border-b-2 border-secondary/20 lg:border-b-none">
                 <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-r-2 border-secondary/20 bg-primary">
-                  <p className="absolute top-0 uppercase font-showcase font-black -left-1/3 -rotate-90 text-9xl text-secondary">
+                  <p className="absolute top-0 uppercase font-showcase font-black -right-56 -rotate-90 text-9xl text-secondary">
                     {nav[2].label}
                     <div className="absolute top-0 w-56 h-56 bg-secondary/20 rounded-full -z-10" />
                   </p>
@@ -247,10 +247,10 @@ export default function About() {
                   </motion.div>
                 )}
               </div>
-              <div className="h-full w-1/4 relative bg-primary">
+              <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative bg-primary lg:border-r-2 border-secondary/20">
                 <div className="initial__visible absolute top-0 left-0 w-full h-full">
                   <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden">
-                    <p className="absolute top-0 uppercase font-showcase font-black -left-1/4 -rotate-90 text-9xl text-secondary">
+                    <p className="absolute top-0 uppercase font-showcase font-black -right-[23rem] lg:-left-1/4 -rotate-90 text-9xl text-secondary">
                       {nav[3].label}
                       <div className="absolute top-0 w-56 h-56 bg-secondary/20 rounded-full -z-10" />
                     </p>
@@ -259,7 +259,7 @@ export default function About() {
                 </div>
                 {navId === 3 && (
                   <motion.div
-                    className="animate__visible absolute top-10 border-t-2 border-secondary/30 rounded-t-lg pl-10 pt-20 left-0 w-full h-full bg-primary"
+                    className="animate__visible absolute top-0 md:top-1/2 lg:top-10 border-t-2 border-secondary/30 rounded-t-lg pl-10 pt-6 lg:pt-20 left-0 w-full h-full bg-primary flex justify-between md:block flex-wrap"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}
@@ -271,7 +271,7 @@ export default function About() {
                     {icons.map((icon, i) => (
                       <a
                         href={icon.path}
-                        className="py-2 flex"
+                        className="py-2 flex w-1/2 lg:w-full"
                         key={icon.label}
                       >
                         <span className="uppercase font-medium text-secondary text-base font-showcase">

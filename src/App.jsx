@@ -11,6 +11,7 @@ function App() {
   const [inView, setInView] = useState(false);
   const [open, setOpen] = useState(false);
   const [pointers, setPointers] = useState(false);
+  const [showNav, setShowNav] = useState(false);
 
   useEffect(() => {
     setPointers(true);
@@ -33,6 +34,8 @@ function App() {
         open={open}
         inView={inView}
         pointers={pointers}
+        setShowNav={setShowNav}
+        showNav={showNav}
       />
 
       <AnimatePresence mode="wait">

@@ -137,7 +137,7 @@ export default function Project({ inView, setInView }) {
 
   return (
     <motion.div
-      className={`absolute top-0 left-0 w-[96vw] mx-6 mt-6 h-[76.5vh] px-8 md:px-20 overflow-x-hidden border-2 border-secondary/50 overflow-y-hidden`}
+      className={`absolute top-0 left-0 w-[96vw] mx-6 mt-6 h-[81.5vh] px-8 md:px-20 overflow-x-hidden border-2 border-secondary/50 overflow-y-hidden`}
       initial="initial"
       animate="animate"
       exit="exit"

@@ -139,7 +139,7 @@ export default function Work() {
 
   return (
     <motion.div
-      className="absolute top-0 left-0 overflow-hidden lg:px-24 mx-6 w-[96vw] h-[76.5vh] mt-6 bg-primary border-2 border-secondary/50"
+      className="absolute top-0 left-0 overflow-hidden lg:px-24 mx-6 w-[96vw] h-[81.5vh] mt-6 bg-primary border-2 border-secondary/50"
       initial="initial"
       animate="animate"
       exit="exit"

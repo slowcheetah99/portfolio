@@ -1,59 +1,31 @@
 import { motion } from "framer-motion";
+
 export default function NavIntro({ project }) {
   return (
-    <div className="w-full h-[60%] flex">
-      <div className="w-1/2">
-        <motion.h3
-          className="text-2xl font-body mb-2 font-bold"
-          style={{ color: project?.color }}
-          initial={{
-            y: 20,
-            opacity: 0,
-          }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: {
-              duration: 0.5,
+    <div className="w-full h-full flex pt-12">
+      <div className="w-1/2 px-8">
+        {[...project?.name].map((name, i) => (
+          <motion.span
+            className="text-5xl font-bold font-showcase mb-2"
+            key={i}
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
               ease: [0.43, 0.13, 0.23, 0.96],
-              delay: 0.15,
-            },
-          }}
-          exit={{
-            y: 20,
-            opacity: 0,
-            transition: {
-              duration: 0.5,
-              ease: [0.43, 0.13, 0.23, 0.96],
-              delay: 0.15,
-            },
-          }}
-        >
-          Introduction
-        </motion.h3>
+              duration: 0.25,
+              delay: i * 0.1,
+            }}
+          >
+            {name}
+          </motion.span>
+        ))}
         <motion.p
-          className="w-full text-secondary font-body text-sm md:text-2xl lg:text-base"
-          initial={{
-            y: 20,
-            opacity: 0,
-          }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: {
-              duration: 0.5,
-              ease: [0.43, 0.13, 0.23, 0.96],
-              delay: 0.3,
-            },
-          }}
-          exit={{
-            y: 20,
-            opacity: 0,
-            transition: {
-              duration: 0.5,
-              ease: [0.43, 0.13, 0.23, 0.96],
-              delay: 0.3,
-            },
+          className="text-md font-body"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            ease: [0.43, 0.13, 0.23, 0.96],
+            duration: 1,
           }}
         >
           {project?.description}
@@ -61,39 +33,60 @@ export default function NavIntro({ project }) {
       </div>
       <div className="w-1/2">
         <motion.div
-          className="w-full lg:w-[60%] h-1/2 bg-white lg:h-[50vh] absolute -top-8 right-4 md:ml-32 mr-2 md:relative px-4 pt-4 outline-2 outline"
-          style={{ outlineColor: project?.color, rotate: "-4deg" }}
-          whileHover={{ rotate: "0deg" }}
+          className="flex w-full mb-6"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{
-            duration: 0.5,
             ease: [0.43, 0.13, 0.23, 0.96],
+            duration: 1,
+            delay: 0.25,
           }}
         >
-          <motion.img
-            src={`/${project?.image?.md}`}
-            alt={project?.name}
-            className="w-full h-[80%] object-cover object-left-top"
-            initial={{
-              clipPath: "inset(0% 0% 0% 100%)",
-            }}
-            animate={{
-              clipPath: "inset(0% 0% 0% 0%)",
-            }}
-            exit={{
-              clipPath: "inset(0% 0% 0% 100%)",
-            }}
-            transition={{
-              duration: 0.5,
-              ease: [0.17, 0.55, 0.55, 1],
-            }}
-          />
-          <h3
-            className="text-center font-polaroid text-3xl mt-4"
-            style={{ color: project?.color }}
-          >
-            {project?.name}
-          </h3>
+          <p className="text-xl font-semibold w-1/2">Date</p>
+          <p className="text-lg w-1/2">{project?.year}</p>
         </motion.div>
+        <motion.div
+          className="flex w-full mb-6"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            ease: [0.43, 0.13, 0.23, 0.96],
+            duration: 1,
+            delay: 0.5,
+          }}
+        >
+          <p className="text-xl font-semibold w-1/2">Role</p>
+          <div className="w-1/2">
+            {project.role.map((item, i) => (
+              <p key={i} className="w-full mt-3">
+                {item}
+              </p>
+            ))}
+          </div>
+        </motion.div>
+        <motion.div
+          className="flex w-full"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            ease: [0.43, 0.13, 0.23, 0.96],
+            duration: 1,
+            delay: 0.75,
+          }}
+        >
+          <p className="text-xl font-semibold w-1/2">Technologies</p>
+          <div className="w-1/2">
+            {Object.values(project.technologies).map((item, i) => (
+              <p key={i} className="w-full mt-1">
+                {item}
+              </p>
+            ))}
+          </div>
+        </motion.div>
+        {/* <div className="flex w-full">
+          <p className="text-xl font-semibold w-1/2">Project Info</p>
+          <p className="w-1/2">{project?.intro}</p>
+        </div> */}
       </div>
     </div>
   );

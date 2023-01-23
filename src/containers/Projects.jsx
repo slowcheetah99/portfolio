@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useProjectContext } from "../hooks/useProjectContext";
 import { ProjectInfo } from "../components";
 import { useNavigate } from "react-router-dom";
-import { fadeIn } from "../constants/framerVariants";
 import ProjectImage from "../components/ProjectImage";
 import { useServer } from "../hooks";
 
@@ -128,7 +127,8 @@ export default function Work() {
     setPrev(index);
   }
 
-  function viewProject() {
+  function viewProject(e) {
+    e.stopPropagation();
     localStorage.setItem("CURRENT_PROJECT", JSON.stringify(currentProject));
     navigate(`/projects/${currentProject?.slug}`, {
       state: {
@@ -139,7 +139,7 @@ export default function Work() {
 
   return (
     <motion.div
-      className="absolute top-0 left-0 overflow-hidden lg:px-24 mx-6 w-[96vw] h-[81.5vh] mt-6 bg-primary border-2 border-secondary/50"
+      className="absolute top-0 left-0 overflow-hidden lg:px-24 lg:mx-6 w-full lg:w-[96vw] h-[81.5vh] mt-0 lg:mt-6 bg-primary border-2 border-secondary/50"
       initial="initial"
       animate="animate"
       exit="exit"
@@ -159,20 +159,20 @@ export default function Work() {
         />
       </svg>
       <div className="absolute top-0 left-0 w-full h-full z-50">
-        <div className="absolute top-0 left-0 w-full h-full bg-secondary/40 z-10" />
+        {/* <div className="absolute top-0 left-0 w-full h-full bg-secondary/40 z-10" /> */}
         {show && (
           <div>
             {loading ? (
               <p>Loading</p>
             ) : (
               <>
-                <motion.button
+                {/* <motion.button
                   className="bg-[#111] text-primary text-sm md:text-md px-4 py-2 z-50 absolute bottom-20 md:bottom-16 right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-20"
                   onClick={viewProject}
                   variants={fadeUp}
                 >
                   View Project
-                </motion.button>
+                </motion.button> */}
                 <motion.div
                   className="w-fit"
                   initial={{ opacity: 0 }}
@@ -187,11 +187,12 @@ export default function Work() {
                       visible={visible}
                       i={i}
                       prev={prev}
+                      viewProject={viewProject}
                     />
                   ))}
                 </motion.div>
                 <motion.div
-                  className="absolute bottom-28 lg:right-20 lg:translate-x-0 right-1/2 translate-x-1/2 flex gap-x-4 z-10 items-center"
+                  className="absolute bottom-4 right-2 lg:right-20 lg:translate-x-0 flex gap-x-4 z-50 items-center"
                   variants={fadeInStagger}
                 >
                   {projects?.map((project, i) => (

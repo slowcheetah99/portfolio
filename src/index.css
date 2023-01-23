@@ -51,9 +51,9 @@ body {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 } */
 
-.project-img {
+/* .project-img {
   animation: camerapan 1s infinite ease-in-out;
-}
+} */
 
 .text-stroke {
   -webkit-text-stroke: 2px #f3eee7;

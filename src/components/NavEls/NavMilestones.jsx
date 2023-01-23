@@ -3,11 +3,11 @@ import { useState } from "react";
 export default function NavMilestones({ project }) {
   const [current, setCurrent] = useState(project.milestones[0]);
   return (
-    <div className="w-full h-[75%] relative">
+    <div className="w-full h-[75%] relative mt-12">
       <div className="absolute top-0 left-0 flex flex-col gap-y-12 w-full h-full">
         {project?.milestones.map((milestone) => (
           <motion.div
-            className="w-full h-[40vh] flex"
+            className={`w-full flex h-[${100 / project.milestones.length}%]`}
             key={milestone?.id}
             initial={{
               opacity: 0,

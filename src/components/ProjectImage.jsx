@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useProjectContext } from "../hooks/useProjectContext";
-import { useState, useEffect } from "react";
+import { useSize } from "../hooks";
 const fadeUp = {
   initial: {
     y: 10,
@@ -37,13 +37,21 @@ const letters = {
     },
   },
 };
-export default function ProjectImage({ project, visible, i, prev }) {
+export default function ProjectImage({
+  project,
+  visible,
+  i,
+  prev,
+  viewProject,
+}) {
   const { currentProject } = useProjectContext();
   const active = currentProject?.id === project?.id;
+  const [width, height] = useSize();
+  const ratio = width / height;
   return (
     <div>
       <motion.img
-        src={project.image.lg}
+        src={width < 500 ? project.image.md : project.image.lg}
         custom={prev}
         animate={{
           zIndex: active ? 1 : prev === i ? 1 : -10,
@@ -61,12 +69,15 @@ export default function ProjectImage({ project, visible, i, prev }) {
           },
         }}
         alt={project?.name}
-        className="absolute top-0 left-0 w-full h-[90%] object-cover project-img"
+        className={`absolute top-0 left-0 w-full h-[90%] object-cover cursor-pointer grayscale transition-[grayscale]`}
         key={project.id}
+        onClick={viewProject}
+        whileHover={{ filter: "grayscale(0%)", scale: 1.05 }}
+        whileTap={{ filter: "grayscale(0%)" }}
       />
       <div className="w-full h-[10%] bg-white absolute bottom-0 z-50 flex justify-center items-center">
         <motion.span
-          className="text-2xl text-center font-polaroid font-bold text-secondary"
+          className="text-2xl md:text-4xl lg:text-2xl w-full pl-4 lg:pl-0 text-left lg:text-center font-polaroid font-bold text-secondary"
           // style={{ y: -125, opacity: 0 }}
           // transition={{ duration: 1, ease: [0.6, 0.05, -0.01, 0.9] }}
         >

@@ -1,29 +1,17 @@
-import { useState, useCallback, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 
-function getDimensionObject(node) {
-  const rect = node.getBoundingClientRect();
-  return {
-    width: rect.width,
-    height: rect.height,
-  };
-}
 export default function useSize() {
-  const [dimensions, setDimensions] = useState({});
-  const [node, setNode] = useState(null);
+  const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
+  useEffect(() => {
+    function handleResize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
 
-  const ref = useCallback((node) => {
-    setNode(node);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-  useLayoutEffect(() => {
-    if (node) {
-      function measure() {
-        setDimensions(getDimensionObject(node));
-      }
-
-      measure();
-    }
-  }, [node]);
-
-  return [ref, dimensions];
+  return size;
 }

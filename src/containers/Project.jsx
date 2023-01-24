@@ -8,6 +8,7 @@ import {
   NavMilestones,
   NavConclusion,
 } from "../components/NavEls";
+import { useLayoutEffect } from "react";
 const strokeOut = {
   initial: { pathLength: 1, strokeWidth: 400, scale: 1.5 },
   animate: {
@@ -82,14 +83,15 @@ export default function Project({ inView, setInView }) {
   const projects = items;
   const [show, setShow] = useState(false);
   const scrollRef = useRef();
+  const childRef = useRef();
 
-  useEffect(() => {
-    document?.getElementById("scroller")?.scrollTo({
-      // top: scrollRef.current.pageYOffset,
-      top: 200,
+  function handleLoad(el) {
+    el.scrollTo({
+      top: el.getBoundingClientRect().height,
+      left: 0,
       behavior: "smooth",
     });
-  }, []);
+  }
 
   const project =
     location?.state?.project ||
@@ -131,6 +133,8 @@ export default function Project({ inView, setInView }) {
           <div
             className="w-full overflow-scroll"
             style={{ height: window.innerHeight * 4 }}
+            ref={scrollRef}
+            onLoad={() => handleLoad(scrollRef.current)}
           >
             <div className="w-full h-screen overflow-hidden">
               <motion.img

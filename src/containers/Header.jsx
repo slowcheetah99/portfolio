@@ -80,7 +80,7 @@ export default function Header({ pointers, setPointers }) {
 
   return (
     <motion.div
-      className={`absolute top-0 left-0 m-0 lg:pb-20 lg:mt-6 mb-0 md:border-2 border-secondary/50 lg:mx-6 w-full lg:w-[96.5vw] h-full md:h-[81.5vh] md:pt-12 md:overflow-hidden flex flex-col lg:flex-row lg:justify-between bg-primary pt-0`}
+      className={`absolute top-0 left-0 m-0 lg:pb-20 lg:mt-6 mb-0 md:border-2 border-secondary/50 lg:mx-6 w-full lg:w-[96.5vw] h-full md:h-[81.5vh] md:pt-12 lg:pt-0 md:overflow-hidden flex flex-col lg:flex-row lg:justify-between bg-primary pt-0`}
       initial="initial"
       animate="animate"
       exit="exit"

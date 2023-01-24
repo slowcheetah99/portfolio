@@ -134,7 +134,6 @@ export default function Project({ inView, setInView }) {
             className="w-full overflow-scroll"
             style={{ height: window.innerHeight * 4 }}
             ref={scrollRef}
-            onLoad={() => handleLoad(scrollRef.current)}
           >
             <div className="w-full h-screen overflow-hidden">
               <motion.img
@@ -150,6 +149,7 @@ export default function Project({ inView, setInView }) {
                   duration: 1,
                   ease: [0.43, 0.13, 0.23, 0.96],
                 }}
+                onAnimationComplete={() => handleLoad(scrollRef.current)}
               />
             </div>
             <div className="flex w-full h-full" id="scroller" ref={scrollRef}>

@@ -28,7 +28,7 @@ export default function NavFeatures({ project }) {
             transition={{ duration: 2, ease: [0.43, 0.13, 0.23, 0.96] }}
           />
           <div className="absolute top-0 left-0 w-full h-full bg-secondary/50 z-20" />
-          <div className="w-full h-fit text-primary absolute top-1/2 left-[30%] -translate-y-1/2 z-30">
+          <div className="w-full h-fit text-primary absolute top-3/4 lg:top-1/2 left-0 px-4 md:px-0 lg:left-[30%] -translate-y-1/2 z-30">
             <div className="w-fit">
               <motion.h2
                 className="text-4xl font-bold mb-2"
@@ -64,7 +64,7 @@ export default function NavFeatures({ project }) {
               />
             </div>
             <motion.p
-              className="text-lg w-1/2"
+              className="text-sm lg:text-lg w-full lg:w-1/2"
               initial={{
                 y: 20,
                 opacity: 0,
@@ -84,7 +84,7 @@ export default function NavFeatures({ project }) {
           </div>
         </motion.div>
       </AnimatePresence>
-      <div className="w-full h-fit flex gap-x-4 justify-end mt-1 pr-20 z-50 relative">
+      <div className="w-full h-fit flex gap-x-4 justify-end mt-8 lg:mt-1 pr-20 z-50 relative">
         {project.features.map((feature, i) => (
           <motion.img
             src={`/${feature.image.sm}`}

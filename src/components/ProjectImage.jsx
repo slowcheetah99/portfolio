@@ -51,7 +51,7 @@ export default function ProjectImage({
   return (
     <div>
       <motion.img
-        src={width < 500 ? project.image.md : project.image.lg}
+        src={width < 500 ? `/${project.image.md}` : `/${project.image.lg}`}
         custom={prev}
         animate={{
           zIndex: active ? 1 : prev === i ? 1 : -10,

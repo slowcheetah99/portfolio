@@ -74,7 +74,6 @@ const slideUp = {
 export default function About() {
   const [navId, setNavId] = useState(0);
   const [show, setShow] = useState(false);
-  const resumeUrl = "/docs/resume2.pdf";
   const nav = [
     {
       id: 0,
@@ -109,19 +108,6 @@ export default function About() {
     },
   ];
 
-  function handleResume(e) {
-    e.preventDefault();
-    new JsFileDownloader({
-      url: resumeUrl,
-      timeout: 5000,
-    })
-      .then(() => {
-        console.log("done");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
   return (
     <motion.div
       className={`absolute top-0 left-0 mt-0 lg:mt-6 mb-0 border-2 border-secondary/50 mx-0 lg:mx-6 w-full lg:w-[96.5vw] h-[81.5vh] bg-primary overflow-hidden`}
@@ -152,17 +138,17 @@ export default function About() {
               ))}
             </div>
             <div className="sm:w-full lg:w-5/6 h-full flex flex-col md:flex-row md:flex-wrap">
-              <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative border-b-2 border-secondary/20 lg:border-none">
+              <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative border-b-2 border-secondary/20 lg:border-none bg-primary">
                 <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-x-2 border-secondary/20">
-                  <p className="absolute top-20 uppercase font-showcase font-black -right-36 lg:-right-10/12 -rotate-90 text-9xl text-secondary">
+                  <p className="absolute top-20 uppercase font-showcase font-black -right-36 lg:-right-10/12 -rotate-90 text-9xl text-secondary/10">
                     {nav[0].label}
                     <div className="absolute top-0 w-56 h-56 bg-primary rounded-full -z-10 bg-secondary/20" />
                   </p>
-                  <Info className="absolute -bottom-12 -left-12 text-9xl fill-secondary/50 border-2 border-secondary/50 rounded-full" />
+                  <Info className="absolute -bottom-12 -left-12 text-9xl fill-secondary/10 border-2 border-secondary/10 rounded-full" />
                 </div>
                 {navId === 0 && (
                   <motion.div
-                    className="animate__visible absolute top-0 md:top-1/2 lg:top-10 border-t-2 border-l-2 border-secondary/30 rounded-t-lg px-5 pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
+                    className="animate__visible absolute top-0 md:top-2 lg:top-10 border-t-2 border-l-2 border-secondary/30 rounded-t-lg px-3 pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}
@@ -171,7 +157,7 @@ export default function About() {
                       ease: [0.43, 0.13, 0.23, 0.96],
                     }}
                   >
-                    <p className="font-body font-light">
+                    <p className="font-body font-light text-sm">
                       Robert Gardner is a front-end developer and all-around
                       design enthusiast. He believes in coding best practices,
                       standards and accessibility conscience design, crafting
@@ -182,15 +168,15 @@ export default function About() {
               </div>
               <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative bg-primary lg:border-r-2 border-b-2 border-secondary/20 lg:border-b-none">
                 <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-x-2 border-secondary/20">
-                  <p className="absolute top-0 uppercase font-showcase font-black lg:-left-1/2 -right-64  -rotate-90 text-9xl text-secondary">
+                  <p className="absolute top-0 uppercase font-showcase font-black lg:-left-1/2 -right-64  -rotate-90 text-9xl text-secondary/10">
                     {nav[1].label}
                     <div className="absolute top-0 w-56 h-56 bg-primary rounded-full -z-10 bg-secondary/20" />
                   </p>
-                  <Tools className="absolute -bottom-12 -left-12 text-9xl p-4 fill-secondary/50 border-2 border-secondary/50 rounded-full" />
+                  <Tools className="absolute -bottom-12 -left-12 text-9xl p-4 fill-secondary/10 border-2 border-secondary/10 rounded-full" />
                 </div>
                 {navId === 1 && (
                   <motion.div
-                    className="animate__visible absolute top-0 md:top-1/2 lg:top-10 border-t-2 border-secondary/30 rounded-t-lg pt-0 md:pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
+                    className="animate__visible absolute top-0 md:top-2 lg:top-10 border-t-2 border-secondary/30 rounded-t-lg pt-0 md:pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}
@@ -220,11 +206,11 @@ export default function About() {
               </div>
               <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative bg-primary lg:border-r-2 border-b-2 border-secondary/20 lg:border-b-none">
                 <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-r-2 border-secondary/20 bg-primary">
-                  <p className="absolute top-0 uppercase font-showcase font-black -right-56 -rotate-90 text-9xl text-secondary">
+                  <p className="absolute top-0 uppercase font-showcase font-black -right-56 -rotate-90 text-9xl text-secondary/10">
                     {nav[2].label}
                     <div className="absolute top-0 w-56 h-56 bg-secondary/20 rounded-full -z-10" />
                   </p>
-                  <PDF className="absolute -bottom-12 -left-12 text-9xl opacity-50" />
+                  <PDF className="absolute -bottom-12 -left-12 text-9xl opacity-10" />
                 </div>
                 {navId === 2 && (
                   <motion.div
@@ -237,29 +223,30 @@ export default function About() {
                       ease: [0.43, 0.13, 0.23, 0.96],
                     }}
                   >
-                    <button
-                      type="button"
+                    <a
+                      href="https://flowcv.com/resume/w186gtk5l2"
+                      rel="link"
+                      target="_blank"
                       className="w-full h-12 grid place-items-center bg-secondary text-primary font-showcase uppercase"
-                      onClick={handleResume}
                     >
                       Resume
-                    </button>
+                    </a>
                   </motion.div>
                 )}
               </div>
               <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative bg-primary lg:border-r-2 border-secondary/20">
                 <div className="initial__visible absolute top-0 left-0 w-full h-full">
                   <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden">
-                    <p className="absolute top-0 uppercase font-showcase font-black -right-[23rem] lg:-left-1/4 -rotate-90 text-9xl text-secondary">
+                    <p className="absolute top-0 uppercase font-showcase font-black -right-[23rem] lg:-left-1/4 -rotate-90 text-9xl text-secondary/10">
                       {nav[3].label}
                       <div className="absolute top-0 w-56 h-56 bg-secondary/20 rounded-full -z-10" />
                     </p>
-                    <Contact className="absolute -bottom-12 -left-12 text-9xl opacity-50" />
+                    <Contact className="absolute -bottom-12 -left-12 text-9xl opacity-10" />
                   </div>
                 </div>
                 {navId === 3 && (
                   <motion.div
-                    className="animate__visible absolute top-0 md:top-1/2 lg:top-10 border-t-2 border-secondary/30 rounded-t-lg pl-10 pt-6 lg:pt-20 left-0 w-full h-full bg-primary flex justify-between md:block flex-wrap"
+                    className="animate__visible absolute top-0 md:top-2 lg:top-10 border-t-2 border-secondary/30 rounded-t-lg pl-10 pt-6 lg:pt-20 left-0 w-full h-full bg-primary flex justify-between md:block flex-wrap"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}

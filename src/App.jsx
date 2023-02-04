@@ -24,7 +24,7 @@ function App() {
   if (loading) return <Loading setLoading={setLoading} />;
   return (
     <div
-      className={`bg-slate-100 outline outline-offset-8 outline-secondary h-screen w-screen md:overflow-hidden px-20 pt-4 relative ${
+      className={`bg-slate-100 outline outline-offset-8 outline-secondary h-screen w-screen overflow-hidden px-20 pt-4 relative ${
         pointers ? "pointer-events-auto" : "pointer-events-none"
       }`}
     >

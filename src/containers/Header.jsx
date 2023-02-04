@@ -80,22 +80,22 @@ export default function Header({ pointers, setPointers }) {
 
   return (
     <motion.div
-      className={`absolute top-0 left-0 m-0 lg:pb-20 lg:mt-6 mb-0 md:border-2 border-secondary/50 lg:mx-6 w-full lg:w-[96.5vw] h-full md:h-[81.5vh] md:pt-12 lg:pt-0 md:overflow-hidden flex flex-col lg:flex-row lg:justify-between bg-primary pt-0`}
+      className={`absolute top-0 left-0 m-0 lg:pb-20 lg:mt-6 mb-0 md:border-2 border-secondary/50 lg:mx-6 w-full lg:w-[95.5vw] xl:w-[97vw] h-screen overflow-auto pb-[18.5vh] md:pb-0 md:h-[81.5vh] lg:pt-0 md:overflow-hidden flex flex-col lg:flex-row lg:justify-between bg-primary pt-0`}
       initial="initial"
       animate="animate"
       exit="exit"
       style={{ transformOrigin: "center center" }}
       onAnimationComplete={handleComplete}
     >
-      <div className="w-full lg:w-fit pt-12 h-fit text-secondary flex flex-col lg:justify-start gap-x-2 lg:gap-y-8 lg:gap-x-8 md:mb-24 lg:mb-0">
+      <div className="w-full md:w-full lg:w-fit pt-12 h-fit text-secondary flex flex-col lg:justify-start gap-y-2 lg:gap-y-4 md:mb-0">
         <motion.div
-          className="w-full h-full lg:w-fit text-left pl-8 md:pl-20 lg:pl-0"
+          className="w-full h-full lg:w-fit text-left pl-8 lg:pl-0"
           initial="initial"
           animate="animate"
           variants={staggerOut}
         >
           <motion.p
-            className="text-lg md:text-4xl lg:ml-[84px] mb-2 md:mb-8 font-polaroid"
+            className="text-lg md:text-xl lg:text-3xl lg:ml-6 mb-2 md:mb-4 lg:mb-8 font-polaroid"
             variants={fadeUp}
           >
             Hi, I'm{" "}
@@ -125,7 +125,7 @@ export default function Header({ pointers, setPointers }) {
               </svg>
             </span>
           </motion.p>
-          <div className="w-full lg:h-fit flex flex-col xs:gap-y-0 sm:gap-y-6 lg:justify-start">
+          <div className="w-full lg:1/2 flex flex-col md:flex-row lg:flex-col xs:gap-y-0 sm:gap-y-6 lg:gap-y-10 lg:justify-start">
             {text.map((item, i) => {
               const isActive = active === i;
               const xPos = x;
@@ -146,11 +146,12 @@ export default function Header({ pointers, setPointers }) {
               );
             })}
           </div>
+          <div className="w-full h-[2px] bg-[#111]/20 hidden md:block lg:hidden md:my-6 lg:my-0" />
         </motion.div>
       </div>
 
       <motion.div
-        className="h-fit w-full lg:w-1/2 lg:mt-12 mt-2 lg:ml-8 flex flex-col justify-center lg:items-center md:justify-start md:pl-20 pt-4 md:pt-0"
+        className="h-fit w-full md:w-full lg:w-1/2 lg:mt-12 mt-2 md:mt-0 ml-0 flex flex-col justify-center lg:items-center md:justify-start md:pl-0 pt-4 md:pt-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
@@ -159,17 +160,17 @@ export default function Header({ pointers, setPointers }) {
           ease: [0.43, 0.13, 0.23, 0.96],
         }}
       >
-        <p className="text-md w-full pl-8 pr-8 md:pl-0 lg:mx-0 md:w-full lg:w-9/12 font-showcase2 border-b-[1px] border-secondary pb-4 md:text-2xl lg:text-base">
+        <p className="w-full pl-8 pr-8 md:px-6 lg:px-0 md:w-full lg:w-9/12 font-showcase2 border-b-[1px] border-secondary pb-4 md:text-lg lg:text-base">
           I'm a big enthusiast when it comes to giving life to user interfaces
           through simple, yet technical designs. Outside of code and design,
           you'd often find me either on the FL Studio DAW or watching anime.
         </p>
-        <div className="flex md:text-2xl lg:text-base pl-8 pr-8 md:pl-0 justify-between md:gap-x-10 font-showcase2 mt-4 border-b-[1px] border-secondary pb-4 w-full lg:w-9/12">
+        <div className="flex md:text-lg lg:text-base pl-8 pr-8 md:px-6 lg:px-0 justify-between font-showcase2 mt-4 border-b-[1px] border-secondary pb-4 w-full lg:w-9/12">
           <p>Email</p>
           <p>rgaronderdev@gmail.com</p>
         </div>
 
-        <div className="flex pl-8 pr-8 md:pl-0 justify-between md:gap-x-8 font-showcase2 mt-4 border-b-[1px] border-secondary pb-4 w-full md:w-full lg:w-9/12 md:text-2xl lg:text-base">
+        <div className="flex pl-8 pr-8 md:px-6 justify-between font-showcase2 mt-4 border-b-[1px] border-secondary pb-4 w-full md:w-full lg:w-9/12 md:text-lg lg:text-base">
           <p>Phone</p>
           <p>+254792636357</p>
         </div>
@@ -210,7 +211,7 @@ function HomeText({
 }) {
   return (
     <motion.div
-      className="lg:ml-20 lg:mb-12 relative after:none md:after:absolute after:content-[''] after:bottom-0 after:w-12 after:bg-blend-difference after:h-0.5  after:rounded-full after:bg-secondary w-full"
+      className="md:mr-6 lg:mr-0 lg:ml-6 lg:mb-0 relative after:none md:after:absolute after:content-[''] after:bottom-0 after:w-12 after:bg-blend-difference after:h-0.5  after:rounded-full after:bg-secondary w-full"
       variants={fadeUp}
       onMouseEnter={() => {
         setActive(i);
@@ -225,7 +226,7 @@ function HomeText({
         {[...item.label].map((item, i) => (
           <motion.span
             key={i}
-            className="text-secondary text-[2.75rem] md:text-7xl font-showcase font-light relative bg-blend-difference
+            className="text-secondary text-[2.75rem] md:text-4xl lg:text-6xl xl:text-7xl font-showcase font-light relative bg-blend-difference md:whitespace-nowrap
       overflow-hidden"
             initial={{
               y: 50,

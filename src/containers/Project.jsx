@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import { useServer } from "../hooks";
+import { useServer, useSize } from "../hooks";
 import {
   NavIntro,
   NavFeatures,
@@ -82,6 +82,7 @@ export default function Project({ inView, setInView }) {
   const { items } = useServer();
   const projects = items;
   const [show, setShow] = useState(false);
+  const [width, height] = useSize();
   const scrollRef = useRef();
   const childRef = useRef();
 
@@ -121,7 +122,7 @@ export default function Project({ inView, setInView }) {
 
   return (
     <motion.div
-      className={`absolute top-0 left-0 w-[96vw] mx-6 mt-6 h-[81.5vh] px-8 md:px-0 overflow-x-hidden border-2 border-secondary/50 overflow-y-hidden`}
+      className={`absolute top-0 left-0 w-full md:w-[96.5vw] mx-0 md:mx-6 mt-0 lg:mt-6  h-[81.5vh] px-0 overflow-x-hidden border-2 border-secondary/50 overflow-y-hidden`}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -131,14 +132,14 @@ export default function Project({ inView, setInView }) {
       <div className="relative z-50 w-full h-fit">
         {show && (
           <div
-            className="w-full overflow-scroll"
+            className="w-screen overflow-y-scroll overflow-x-hidden"
             style={{ height: window.innerHeight * 4 }}
             ref={scrollRef}
           >
-            <div className="w-full h-screen overflow-hidden">
+            <div className="w-screen h-screen overflow-x-hidden">
               <motion.img
-                src={`/${project?.image.lg}`}
-                className="w-full h-full object-cover object-left"
+                src={`/${project.image.lg}`}
+                className="w-full h-full object-cover object-top-left"
                 initial={{
                   scale: 1.25,
                 }}
@@ -152,8 +153,12 @@ export default function Project({ inView, setInView }) {
                 onAnimationComplete={() => handleLoad(scrollRef.current)}
               />
             </div>
-            <div className="flex w-full h-full" id="scroller" ref={scrollRef}>
-              <div className="flex flex-col gap-y-3 mt-12 ml-4 w-1/6">
+            <div
+              className="flex flex-col lg:flex-row w-full h-full"
+              id="scroller"
+              ref={scrollRef}
+            >
+              <div className="flex flex-row lg:flex-col gap-x-3 lg:gap-y-3 my-12 ml-4 w-full lg:w-1/6">
                 {nav.map((item, i) => {
                   const isActive = navItem.link === item.link;
                   return (
@@ -181,7 +186,7 @@ export default function Project({ inView, setInView }) {
                   );
                 })}
               </div>
-              <div className="w-5/6 h-full">{navItem.element}</div>
+              <div className="lg:w-5/6 w-full h-full">{navItem.element}</div>
             </div>
           </div>
         )}

@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 export default function NavIntro({ project }) {
   return (
-    <div className="w-full h-full flex pt-12">
-      <div className="w-1/2 px-8">
+    <div className="w-full h-full lg:flex pt-4 lg:pt-12">
+      <div className="w-full lg:w-1/2 px-6 lg:px-8">
         {[...project?.name].map((name, i) => (
           <motion.span
             className="text-5xl font-bold font-showcase mb-2"
@@ -20,7 +20,7 @@ export default function NavIntro({ project }) {
           </motion.span>
         ))}
         <motion.p
-          className="text-md font-body"
+          className="font-body"
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
@@ -31,7 +31,7 @@ export default function NavIntro({ project }) {
           {project?.description}
         </motion.p>
       </div>
-      <div className="w-1/2">
+      <div className="w-full lg:w-1/2 ml-6 lg:ml-0 mt-6 lg:mt-0">
         <motion.div
           className="flex w-full mb-6"
           initial={{ y: 100, opacity: 0 }}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 const Instance = axios.create({
-  baseURL: import.meta.env.VITE_SERVERLESS_URL,
+  baseURL: "https://portfolio-serverless-func.vercel.app/",
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",

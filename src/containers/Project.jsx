@@ -8,7 +8,6 @@ import {
   NavMilestones,
   NavConclusion,
 } from "../components/NavEls";
-import { useLayoutEffect } from "react";
 const strokeOut = {
   initial: { pathLength: 1, strokeWidth: 400, scale: 1.5 },
   animate: {
@@ -132,11 +131,11 @@ export default function Project({ inView, setInView }) {
       <div className="relative z-50 w-full h-fit">
         {show && (
           <div
-            className="w-screen overflow-y-scroll overflow-x-hidden"
+            className="w-full h-fit overflow-y-scroll overflow-x-hidden"
             style={{ height: window.innerHeight * 4 }}
             ref={scrollRef}
           >
-            <div className="w-screen h-screen overflow-x-hidden">
+            <div className="w-screen h-[81.5vh] overflow-x-hidden">
               <motion.img
                 src={`/${project.image.lg}`}
                 className="w-full h-full object-cover object-top-left"
@@ -158,7 +157,7 @@ export default function Project({ inView, setInView }) {
               id="scroller"
               ref={scrollRef}
             >
-              <div className="flex flex-row lg:flex-col gap-x-3 lg:gap-y-3 my-12 ml-4 w-full lg:w-1/6">
+              <div className="flex flex-row lg:flex-col gap-x-3 lg:gap-y-4 2xl:gap-y-12 my-12 ml-4 w-full lg:w-1/6 border-r-4 border-secondary/20 2xl:pl-24">
                 {nav.map((item, i) => {
                   const isActive = navItem.link === item.link;
                   return (
@@ -168,7 +167,7 @@ export default function Project({ inView, setInView }) {
                       onClick={() => setNavItem(item)}
                     >
                       <motion.p
-                        className={`text-[${project?.color}] uppercase font-showcase text-secondary`}
+                        className={`text-[${project?.color}] text-base uppercase font-showcase text-secondary 2xl:text-4xl`}
                         style={{ fontWeight: isActive ? "900" : "400" }}
                         transition={{ ease: "easeInOut", duration: 0.4 }}
                       >
@@ -186,13 +185,15 @@ export default function Project({ inView, setInView }) {
                   );
                 })}
               </div>
-              <div className="lg:w-5/6 w-full h-full">{navItem.element}</div>
+              <div className="lg:w-5/6 w-full h-[81.5vh]">
+                {navItem.element}
+              </div>
             </div>
           </div>
         )}
       </div>
       <svg
-        className="absolute w-[150vw] h-[150vh] -top-[50vh] -left-40 overflow-visible rotate-[20deg] stroke-secondary -z-0"
+        className="absolute w-[150vw] h-[150vh] -top-[50vh] -left-40 overflow-visible rotate-[20deg] -z-0"
         viewBox="0 0 1916 741"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -206,6 +207,9 @@ export default function Project({ inView, setInView }) {
           onAnimationComplete={() => setShow(true)}
         />
       </svg>
+      <p className="absolute -bottom-56 -right-52 text-[350px] text-secondary/10 z-0 font-showcase2 font-bold">
+        Projects
+      </p>
     </motion.div>
   );
 }

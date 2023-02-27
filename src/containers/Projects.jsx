@@ -139,7 +139,7 @@ export default function Work() {
 
   return (
     <motion.div
-      className="absolute top-0 left-0 overflow-hidden lg:px-24 lg:mx-6 w-full lg:w-[96vw] h-[81.5vh] mt-0 lg:mt-6 bg-primary border-2 border-secondary/50"
+      className="absolute top-0 left-0 overflow-hidden lg:px-24 lg:mx-6 w-full lg:w-[96vw] 2xl:w-[98vw] h-[81.5vh] mt-0 lg:mt-6 bg-primary border-2 border-secondary/50"
       initial="initial"
       animate="animate"
       exit="exit"
@@ -192,7 +192,7 @@ export default function Work() {
                   ))}
                 </motion.div>
                 <motion.div
-                  className="absolute bottom-4 right-2 lg:right-20 lg:translate-x-0 flex gap-x-4 z-50 items-center"
+                  className="absolute bottom-[10px] 2xl:bottom-6 right-2 2xl:right-24 lg:right-20 lg:translate-x-0 flex gap-x-4 z-50 items-center"
                   variants={fadeInStagger}
                 >
                   {projects?.map((project, i) => (

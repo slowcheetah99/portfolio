@@ -3,10 +3,10 @@ import { useState } from "react";
 export default function NavFeatures({ project }) {
   const [hovered, setHovered] = useState(project.features[0]);
   return (
-    <div className="w-full h-fit relative">
+    <div className="w-full h-full relative">
       <AnimatePresence mode="wait">
         <motion.div
-          className="w-full h-[460px] relative overflow-hidden"
+          className="w-full h-[90%] relative overflow-hidden"
           key={hovered?.id}
           initial={{
             clipPath: "inset(0% 0% 0% 100%)",
@@ -31,7 +31,7 @@ export default function NavFeatures({ project }) {
           <div className="w-full h-fit text-primary absolute top-3/4 lg:top-1/2 left-0 px-4 md:px-0 lg:left-[30%] -translate-y-1/2 z-30">
             <div className="w-fit">
               <motion.h2
-                className="text-4xl font-bold mb-2"
+                className="text-4xl 2xl:text-7xl font-bold mb-2"
                 initial={{
                   y: 20,
                   opacity: 0,
@@ -64,7 +64,7 @@ export default function NavFeatures({ project }) {
               />
             </div>
             <motion.p
-              className="text-sm lg:text-lg w-full lg:w-1/2"
+              className="text-sm lg:text-lg 2xl:text-4xl w-full lg:w-1/2"
               initial={{
                 y: 20,
                 opacity: 0,
@@ -84,28 +84,35 @@ export default function NavFeatures({ project }) {
           </div>
         </motion.div>
       </AnimatePresence>
-      <div className="w-full h-fit flex gap-x-4 justify-end mt-8 lg:mt-1 pr-20 z-50 relative">
-        {project.features.map((feature, i) => (
-          <motion.img
-            src={`/${feature.image.sm}`}
-            key={feature.id}
-            className="w-16 h-8 object-center object-cover cursor-pointer"
-            initial={{
-              y: 200,
-              opacity: 0,
-            }}
-            animate={{
-              y: 0,
-              opacity: 1,
-            }}
-            transition={{
-              duration: 0.5,
-              ease: [0.43, 0.13, 0.23, 0.96],
-              delay: i * 0.1,
-            }}
-            onClick={() => setHovered(feature)}
-          />
-        ))}
+      <div className="w-full h-[10%] flex gap-x-8 justify-end pt-6 pr-32 z-50 relative bg-white">
+        {project.features.map((feature, i) => {
+          const isActive = feature?.id === hovered?.id;
+          return (
+            <motion.img
+              src={`/${feature.image.sm}`}
+              key={feature.id}
+              className={`w-18 h-8 2xl:w-24 2xl:h-12 object-center object-cover cursor-pointer ${
+                isActive
+                  ? " outline outline-2 outline-secondary outline-offset-4"
+                  : " "
+              }`}
+              initial={{
+                y: 200,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 0.5,
+                ease: [0.43, 0.13, 0.23, 0.96],
+                delay: i * 0.1,
+              }}
+              onClick={() => setHovered(feature)}
+            />
+          );
+        })}
       </div>
     </div>
   );

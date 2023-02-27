@@ -37,7 +37,7 @@ export default function Navbar({ open, setOpen, showNav, setShowNav }) {
     >
       <div className="w-full h-full flex justify-between items-center font-bold pl-6 mt-8 md:mt-0">
         <Link to="/" className="hover:scale-105 transition-all">
-          <span className="text-md font-base uppercase font-polaroid text-lg md:text-xl lg:text-2xl">
+          <span className="text-md font-base uppercase font-polaroid text-lg md:text-xl lg:text-2xl 2xl:text-5xl">
             Robert Okusi
           </span>
         </Link>
@@ -65,7 +65,7 @@ export default function Navbar({ open, setOpen, showNav, setShowNav }) {
         </div>
 
         <motion.a
-          className="transition-all relative text-md w-fit h-6 px-8 overflow-hidden py-6 items-center flex  rounded-sm text-lg md:text-xl lg:text-2xl text-secondary font-base font-polaroid 
+          className="transition-all relative text-md w-fit h-6 px-8 overflow-hidden py-6 items-center flex  rounded-sm text-lg md:text-xl lg:text-2xl 2xl:text-5xl text-secondary font-base font-polaroid 
           "
           onMouseEnter={() => setShow(true)}
           onMouseOut={() => setShow(false)}
@@ -98,7 +98,7 @@ function NavEl({ item, pathname, small, setShowNav }) {
       } font-polaroid rounded-full`}
     >
       <motion.p
-        className="w-full h-full text-center text-lg md:text-xl lg:text-2xl py-2 rounded-full"
+        className="w-full h-full text-center text-lg md:text-xl lg:text-2xl 2xl:text-5xl py-2 rounded-full"
         style={{
           backgroundColor: small ? (isActive ? "#333439" : "") : "",
           color: small ? (isActive ? "#f3eee7" : "") : "",

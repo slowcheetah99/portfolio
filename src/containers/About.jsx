@@ -110,7 +110,7 @@ export default function About() {
 
   return (
     <motion.div
-      className={`absolute top-0 left-0 mt-0 lg:mt-6 mb-0 border-2 border-secondary/50 mx-0 lg:mx-6 w-full lg:w-[96.5vw] h-[81.5vh] bg-primary overflow-hidden`}
+      className={`absolute top-0 left-0 mt-0 lg:mt-6 mb-0 border-2 border-secondary/50 mx-0 lg:mx-6 w-full lg:w-[96.5vw] 2xl:w-[98vw] h-[81.5vh] bg-primary overflow-hidden`}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -127,7 +127,7 @@ export default function About() {
             }}
             className="h-full flex flex-col lg:flex-row"
           >
-            <div className="flex flex-row lg:flex-col justify-between lg:gap-y-4 w-full lg:w-1/6 h-fit lg:justify-center ml-0 lg:ml-24 lg:mt-12 p-4 md:p-8 lg:p-0 border-2 border-secondary/20 lg:border-none">
+            <div className="flex flex-row lg:flex-col justify-between lg:gap-y-4 2xl:gap-y-12 w-full lg:w-1/6 h-fit lg:justify-center ml-0 lg:ml-24 lg:mt-12 p-4 md:p-8 lg:p-0 border-2 border-secondary/20 lg:border-none">
               {nav.map((item) => (
                 <NavEl
                   item={item}
@@ -148,7 +148,7 @@ export default function About() {
                 </div>
                 {navId === 0 && (
                   <motion.div
-                    className="animate__visible absolute top-0 md:top-2 lg:top-10 border-t-2 border-l-2 border-secondary/30 rounded-t-lg px-3 pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
+                    className="animate__visible absolute top-0 md:top-2 lg:top-10 xl:top-1/4 border-t-2 border-l-2 border-secondary/30 rounded-t-lg px-3 pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}
@@ -157,7 +157,7 @@ export default function About() {
                       ease: [0.43, 0.13, 0.23, 0.96],
                     }}
                   >
-                    <p className="font-body font-light text-sm">
+                    <p className="font-body font-light text-sm lg:text-base 2xl:text-3xl lg:px-4">
                       Robert Gardner is a front-end developer and all-around
                       design enthusiast. He believes in coding best practices,
                       standards and accessibility conscience design, crafting
@@ -176,7 +176,7 @@ export default function About() {
                 </div>
                 {navId === 1 && (
                   <motion.div
-                    className="animate__visible absolute top-0 md:top-2 lg:top-10 border-t-2 border-secondary/30 rounded-t-lg pt-0 md:pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
+                    className="animate__visible absolute top-0 md:top-2 lg:top-10 xl:top-1/4 border-t-2 border-secondary/30 rounded-t-lg pt-0 md:pt-4 lg:pt-20 left-0 w-full h-full bg-primary lg:px-4"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}
@@ -190,11 +190,11 @@ export default function About() {
                         className="flex gap-x-4 items-center border-b-2 border-secondary mx-1 lg:mx-4 mb-1 lg:mb-4 pb-2"
                         key={service.work}
                       >
-                        <span className="text-xl text-secondary">
+                        <span className="text-xl 2xl:text-5xl text-secondary">
                           {service.tool}
                         </span>
                         <p
-                          className="py-2 uppercase font-medium text-secondary text-base font-body"
+                          className="py-2 uppercase font-medium text-secondary text-base 2xl:text-3xl lg:px-4 font-body"
                           key={i}
                         >
                           {service.work}
@@ -227,7 +227,7 @@ export default function About() {
                       href="https://flowcv.com/resume/w186gtk5l2"
                       rel="link"
                       target="_blank"
-                      className="w-full h-12 grid place-items-center bg-secondary text-primary font-showcase uppercase"
+                      className="w-full grid place-items-center bg-secondary text-primary font-showcase uppercase lg:py-4 2xl:py-8 2xl:text-3xl "
                     >
                       Resume
                     </a>
@@ -246,7 +246,7 @@ export default function About() {
                 </div>
                 {navId === 3 && (
                   <motion.div
-                    className="animate__visible absolute top-0 md:top-2 lg:top-10 border-t-2 border-secondary/30 rounded-t-lg pl-10 pt-6 lg:pt-20 left-0 w-full h-full bg-primary flex justify-between md:block flex-wrap"
+                    className="animate__visible absolute top-0 md:top-2 lg:top-10 xl:top-1/4 border-t-2 border-secondary/30 rounded-t-lg pl-10 pt-6 lg:pt-20 left-0 w-full h-full bg-primary flex justify-between md:block flex-wrap"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}
@@ -258,10 +258,10 @@ export default function About() {
                     {icons.map((icon, i) => (
                       <a
                         href={icon.path}
-                        className="py-2 flex w-1/2 lg:w-full"
+                        className="py-2 flex w-1/2 lg:w-full lg:mb-4 2xl:mb-8"
                         key={icon.label}
                       >
-                        <span className="uppercase font-medium text-secondary text-base font-showcase">
+                        <span className="uppercase font-medium text-secondary text-base lg:text-lg 2xl:text-3xl font-showcase">
                           {icon.label}
                         </span>
                         <LinkArrow className="text-2xl text-primary -rotate-45" />
@@ -271,18 +271,6 @@ export default function About() {
                 )}
               </div>
             </div>
-
-            {/* 
-            <div className="flex flex-col gap-y-2 w-fit ml-24 mt-8">
-              {icons.map((icon, i) => (
-                <a href={icon.path} className="py-2 flex" key={icon.label}>
-                  <span className="uppercase font-medium text-secondary text-base font-showcase">
-                    {icon.label}
-                  </span>
-                  <LinkArrow className="text-2xl text-primary -rotate-45" />
-                </a>
-              ))}
-            </div> */}
           </motion.div>
         )}
       </div>
@@ -292,6 +280,7 @@ export default function About() {
       </p>
       <svg
         className="absolute w-[150vw] h-[150vh] -top-[50vh] -left-40 overflow-visible rotate-[20deg] stroke-secondary -z-0"
+        viewBox="0 0 1916 741"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -317,7 +306,7 @@ function NavEl({ item, navId, setNavId }) {
       onClick={() => setNavId(item.id)}
     >
       <span
-        className="font-showcase text-base text-secondary"
+        className="font-showcase text-base text-secondary 2xl:text-4xl"
         style={{ fontWeight: isActive ? "900" : "500" }}
         transition={{
           duration: 0.5,

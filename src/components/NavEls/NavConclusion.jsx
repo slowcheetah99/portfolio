@@ -35,7 +35,7 @@ export default function NavConclusion({ project }) {
     <div className="w-full h-[80%] pt-0 lg:pt-12">
       <div className="w-full md:w-1/2">
         <motion.h3
-          className="text-4xl mb-2 font-bold font-showcase pl-6"
+          className="text-4xl 2xl:text-6xl mb-2 2xl:mb-6 font-bold font-showcase pl-6"
           style={{ color: project?.color }}
           initial={{
             y: 20,
@@ -63,7 +63,7 @@ export default function NavConclusion({ project }) {
           Conclusion
         </motion.h3>
         <motion.p
-          className="w-full text-secondary font-body text-sm md:text-2xl lg:text-base px-6 md:px-0"
+          className="w-full text-secondary font-body text-sm md:text-2xl lg:text-base px-6 md:px-6 2xl:text-3xl"
           initial={{
             y: 20,
             opacity: 0,
@@ -94,7 +94,7 @@ export default function NavConclusion({ project }) {
         <a
           href={project.link}
           target="_blank"
-          className="mt-16 block font-bold text-lg px-6 py-2 font-showcase underline underline-offset-4"
+          className="mt-16 block font-bold text-lg 2xl:text-3xl px-6 py-2 font-showcase underline underline-offset-4"
           style={{ color: project.color }}
         >
           Visit Site
@@ -112,12 +112,12 @@ export default function NavConclusion({ project }) {
         >
           <div className="w-fit flex items-center gap-x-2 px-6 py-2 ">
             <Sub className="text-secondary" />
-            <p className="text-base font-bold">Previous Project</p>
+            <p className="text-base font-bold 2xl:text-3xl">Previous Project</p>
           </div>
         </motion.div>
 
         <motion.div
-          className="w-fit cursor-pointer"
+          className="w-fit cursor-pointer pr-24"
           whileHover={{ scale: 1.05 }}
           transition={{
             ease: "easeInOut",
@@ -125,7 +125,7 @@ export default function NavConclusion({ project }) {
           onClick={handleNext}
         >
           <div className="flex w-fit items-center gap-x-2 px-6 py-2">
-            <p className="text-base font-bold">Next Project</p>
+            <p className="text-base font-bold 2xl:text-3xl">Next Project</p>
             <Plus className="text-secondary" />
           </div>
           {/* <div className="w-full h-[2px] bg-secondary" /> */}

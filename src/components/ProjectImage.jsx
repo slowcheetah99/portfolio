@@ -77,7 +77,7 @@ export default function ProjectImage({
       />
       <div className="w-full h-[10%] bg-white absolute bottom-0 z-50 flex justify-center items-center">
         <motion.span
-          className="text-2xl md:text-4xl lg:text-2xl w-full pl-4 lg:pl-0 text-left lg:text-center font-polaroid font-bold text-secondary"
+          className="text-2xl md:text-4xl lg:text-2xl 2xl:text-5xl w-full pl-4 lg:pl-0 text-left lg:text-center font-polaroid font-bold text-secondary"
           // style={{ y: -125, opacity: 0 }}
           // transition={{ duration: 1, ease: [0.6, 0.05, -0.01, 0.9] }}
         >

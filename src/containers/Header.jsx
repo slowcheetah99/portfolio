@@ -80,7 +80,7 @@ export default function Header({ pointers, setPointers }) {
 
   return (
     <motion.div
-      className={`absolute top-0 left-0 m-0 lg:pb-20 lg:mt-6 mb-0 md:border-2 border-secondary/50 lg:mx-6 w-full lg:w-[95.5vw] xl:w-[97vw] h-screen overflow-auto pb-[18.5vh] md:pb-0 md:h-[81.5vh] lg:pt-0 md:overflow-hidden flex flex-col lg:flex-row lg:justify-between bg-primary pt-0`}
+      className={`absolute top-0 left-0 m-0 lg:pb-20 2xl:pt-40 lg:mt-6 mb-0 md:border-2 border-secondary/50 lg:mx-6 w-full lg:w-[95.5vw] 2xl:w-[98vw] h-screen overflow-auto pb-[18.5vh] md:pb-0 md:h-[81.5vh] lg:pt-0 md:overflow-hidden flex flex-col lg:flex-row lg:justify-between bg-primary pt-0 lg:px-24`}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -95,7 +95,7 @@ export default function Header({ pointers, setPointers }) {
           variants={staggerOut}
         >
           <motion.p
-            className="text-lg md:text-xl lg:text-3xl lg:ml-6 mb-2 md:mb-4 lg:mb-8 font-polaroid"
+            className="text-lg md:text-xl lg:text-3xl 2xl:text-5xl lg:ml-6 mb-2 md:mb-4 lg:mb-8 2xl:mb-12 font-polaroid"
             variants={fadeUp}
           >
             Hi, I'm{" "}
@@ -125,7 +125,7 @@ export default function Header({ pointers, setPointers }) {
               </svg>
             </span>
           </motion.p>
-          <div className="w-full lg:1/2 flex flex-col md:flex-row lg:flex-col xs:gap-y-0 sm:gap-y-6 lg:gap-y-10 lg:justify-start">
+          <div className="w-full lg:1/2 flex flex-col md:flex-row lg:flex-col xs:gap-y-0 sm:gap-y-6 lg:gap-y-10 2xl:gap-y-16 lg:justify-start">
             {text.map((item, i) => {
               const isActive = active === i;
               const xPos = x;
@@ -160,17 +160,18 @@ export default function Header({ pointers, setPointers }) {
           ease: [0.43, 0.13, 0.23, 0.96],
         }}
       >
-        <p className="w-full pl-8 pr-8 md:px-6 lg:px-0 md:w-full lg:w-9/12 font-showcase2 border-b-[1px] border-secondary pb-4 md:text-lg lg:text-base">
+        <p className="w-full pl-8 pr-8 md:px-6 lg:px-0 md:w-full lg:w-9/12 2xl:w-full font-showcase2 border-b-[1px] border-secondary pb-4 md:text-lg lg:text-base 2xl:text-3xl 2xl:pb-12">
           I'm a big enthusiast when it comes to giving life to user interfaces
-          through simple, yet technical designs. Outside of code and design,
-          you'd often find me either on the FL Studio DAW or watching anime.
+          through simple, yet technical designs. Outside of "code", you'd find
+          me admiring eye catching website concepts on Twitter under the
+          hashtags #threejs and #webgl.
         </p>
-        <div className="flex md:text-lg lg:text-base pl-8 pr-8 md:px-6 lg:px-0 justify-between font-showcase2 mt-4 border-b-[1px] border-secondary pb-4 w-full lg:w-9/12">
+        <div className="flex md:text-lg lg:text-base 2xl:text-3xl pl-8 pr-8 md:px-6 lg:px-0 justify-between font-showcase2 mt-4 border-b-[1px] border-secondary pb-4 w-full lg:w-9/12 2xl:w-full">
           <p>Email</p>
           <p>rgaronderdev@gmail.com</p>
         </div>
 
-        <div className="flex pl-8 pr-8 md:px-6 justify-between font-showcase2 mt-4 border-b-[1px] border-secondary pb-4 w-full md:w-full lg:w-9/12 md:text-lg lg:text-base">
+        <div className="flex pl-8 pr-8 2xl:text-3xl md:px-6 lg:px-0 justify-between font-showcase2 mt-4 border-b-[1px] border-secondary pb-4 w-full lg:w-9/12 md:text-lg lg:text-base 2xl:w-full">
           <p>Phone</p>
           <p>+254792636357</p>
         </div>
@@ -226,7 +227,7 @@ function HomeText({
         {[...item.label].map((item, i) => (
           <motion.span
             key={i}
-            className="text-secondary text-[2.75rem] md:text-4xl lg:text-6xl xl:text-7xl font-showcase font-light relative bg-blend-difference md:whitespace-nowrap
+            className="text-secondary text-[2.75rem] md:text-4xl lg:text-6xl 2xl:text-9xl font-showcase font-light relative bg-blend-difference md:whitespace-nowrap
       overflow-hidden"
             initial={{
               y: 50,

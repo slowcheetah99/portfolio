@@ -31,7 +31,7 @@ export default function ProjectInfo({ project }) {
   const isActive = project?.id === currentProject?.id;
   return (
     <motion.div
-      className={`w-18 h-8 overflow-hidden cursor-pointer transition-all ${
+      className={`w-18 h-8 2xl:w-24 2xl:h-12 overflow-hidden cursor-pointer transition-all ${
         isActive ? " outline outline-2 outline-secondary outline-offset-4" : " "
       }`}
       onClick={() => {

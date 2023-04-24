@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { text } from "../assets/homepage/homeText";
 import { useMousePosition } from "../hooks";
 import { motion } from "framer-motion";
@@ -65,11 +65,15 @@ const skewTransition = {
   ease: [0.43, 0.13, 0.23, 0.96],
 };
 
+const blockTransition = {};
+
 export default function Header({ pointers, setPointers }) {
   const [active, setActive] = useState(-1);
   const [visible, setVisible] = useState(false);
   const [show, setShow] = useState(false);
   const { x, y } = useMousePosition();
+
+  const size = useSize();
   function handleComplete() {
     const timer = setTimeout(() => {
       setPointers(true);
@@ -80,7 +84,7 @@ export default function Header({ pointers, setPointers }) {
 
   return (
     <motion.div
-      className={`absolute top-0 left-0 m-0 lg:pb-20 2xl:pt-40 lg:mt-6 mb-0 md:border-2 border-secondary/50 lg:mx-6 w-full lg:w-[95.5vw] 2xl:w-[98vw] h-screen overflow-auto pb-[18.5vh] md:pb-0 md:h-[81.5vh] lg:pt-0 md:overflow-hidden flex flex-col lg:flex-row lg:justify-between bg-primary pt-0 lg:px-24`}
+      className={`absolute top-0 left-0 m-0 lg:pb-20 2xl:pt-40 lg:mt-6 mb-0 md:border-2 border-secondary/50 lg:mx-6 w-full lg:w-[95.5vw] 2xl:w-[98vw] h-screen overflow-x-hidden overflow-y-auto pb-[18.5vh] md:pb-0 md:h-[81.5vh] lg:pt-0 md:overflow-hidden flex flex-col lg:flex-row lg:justify-between bg-primary pt-0 lg:px-24`}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -164,7 +168,8 @@ export default function Header({ pointers, setPointers }) {
           I'm a big enthusiast when it comes to giving life to user interfaces
           through simple, yet technical designs. Outside of "code", you'd find
           me admiring eye catching website concepts on Twitter under the
-          hashtags #threejs and #webgl.
+          hashtags #threejs and #webgl and hosting the RedEyeFM Amplifire
+          playlist on their website.
         </p>
         <div className="flex md:text-lg lg:text-base 2xl:text-3xl pl-8 pr-8 md:px-6 lg:px-0 justify-between font-showcase2 mt-4 border-b-[1px] border-secondary pb-4 w-full lg:w-9/12 2xl:w-full">
           <p>Email</p>
@@ -180,21 +185,67 @@ export default function Header({ pointers, setPointers }) {
         Home
       </p>
 
-      <svg
-        className="absolute h-[150vh] w-[150vw] -top-[50vh] -left-40 overflow-visible rotate-[20deg] stroke-secondary -z-0"
-        viewBox="0 0 1916 741"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        // style={{ fill: show ? "orange" : "red", width: show ? "0%" : "100%" }}
-      >
-        <motion.path
-          d="M134.712 276.378C53.826 487.74 -59.2915 763.879 65.7117 695.878C292.713 540.879 508.713 51.5251 606.211 30.8777C737.213 17.3787 317.713 540.879 460.212 720.378C630.709 834.379 873.713 -75.6233 959.211 30.8777C1044.71 137.379 742.209 480.879 818.711 587.878C917.209 664.879 1158.71 -118.123 1254.71 30.8777C1350.71 179.878 1027.21 521.878 1119.21 645.878C1211.21 769.878 1547.21 -132.623 1604.71 30.8777C1662.21 194.378 1456.71 452.378 1549.71 521.878C1642.71 591.378 1905.71 16.8777 1905.71 16.8777"
-          stroke-linecap="round"
-          variants={strokeOut}
-          onAnimationStart={() => setShow(false)}
-          onAnimationComplete={() => setShow(true)}
-        />
-      </svg>
+      {size[0] >= 500 ? (
+        <svg
+          className="absolute h-[150vh] w-[150vw] -top-[50vh] -left-40 overflow-visible rotate-[20deg] stroke-secondary -z-0"
+          viewBox="0 0 1916 741"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <motion.path
+            d="M134.712 276.378C53.826 487.74 -59.2915 763.879 65.7117 695.878C292.713 540.879 508.713 51.5251 606.211 30.8777C737.213 17.3787 317.713 540.879 460.212 720.378C630.709 834.379 873.713 -75.6233 959.211 30.8777C1044.71 137.379 742.209 480.879 818.711 587.878C917.209 664.879 1158.71 -118.123 1254.71 30.8777C1350.71 179.878 1027.21 521.878 1119.21 645.878C1211.21 769.878 1547.21 -132.623 1604.71 30.8777C1662.21 194.378 1456.71 452.378 1549.71 521.878C1642.71 591.378 1905.71 16.8777 1905.71 16.8777"
+            stroke-linecap="round"
+            variants={strokeOut}
+            onAnimationStart={() => setShow(false)}
+            onAnimationComplete={() => setShow(true)}
+          />
+        </svg>
+      ) : (
+        <>
+          <motion.div
+            className="absolute inset-0 w-full h-[70%] bg-secondary z-50"
+            initial={{
+              clipPath: "inset(0% 0% 0% 0%)",
+            }}
+            animate={{
+              clipPath: "inset(0% 0% 100% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+                delay: 0.1,
+              },
+            }}
+            exit={{
+              clipPath: "inset(0% 0% 0% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+              },
+            }}
+          />
+          <motion.div
+            className="absolute inset-0 w-full h-full bg-[#111] z-50"
+            initial={{
+              clipPath: "inset(0% 0% 0% 0%)",
+            }}
+            animate={{
+              clipPath: "inset(0% 0% 100% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+              },
+            }}
+            exit={{
+              clipPath: "inset(0% 0% 0% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+                delay: 0.1,
+              },
+            }}
+          />
+        </>
+      )}
     </motion.div>
   );
 }

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function NavIntro({ project }) {
   return (
-    <div className="w-full h-full lg:flex pt-4 lg:pt-12">
+    <div className="w-full sm:h-fit-content md:h-full lg:flex sm:pb-4 md:pb-0 pt-4 lg:pt-12">
       <div className="w-full lg:w-1/2 px-6 lg:px-8">
         {[...project?.name].map((name, i) => (
           <motion.span

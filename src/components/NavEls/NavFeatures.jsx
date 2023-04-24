@@ -3,10 +3,10 @@ import { useState } from "react";
 export default function NavFeatures({ project }) {
   const [hovered, setHovered] = useState(project.features[0]);
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-[70svh] relative">
       <AnimatePresence mode="wait">
         <motion.div
-          className="w-full h-[90%] relative overflow-hidden"
+          className="w-full h-[89.5%] relative md:overflow-hidden overflow-y-scroll"
           key={hovered?.id}
           initial={{
             clipPath: "inset(0% 0% 0% 100%)",
@@ -84,7 +84,7 @@ export default function NavFeatures({ project }) {
           </div>
         </motion.div>
       </AnimatePresence>
-      <div className="w-full h-[10%] flex gap-x-8 justify-end pt-6 pr-32 z-50 relative bg-white">
+      <div className="w-full h-[11.5%] flex gap-x-8 justify-center items-center md:items-start md:justify-end pt-0 md:pt-6 md:pr-32 z-50 relative bg-white">
         {project.features.map((feature, i) => {
           const isActive = feature?.id === hovered?.id;
           return (

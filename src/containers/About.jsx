@@ -9,7 +9,7 @@ import { BsInfo as Info } from "react-icons/bs";
 import { VscTools as Tools } from "react-icons/vsc";
 import { GrDocumentPdf as PDF } from "react-icons/gr";
 import { GrContact as Contact } from "react-icons/gr";
-import JsFileDownloader from "js-file-downloader";
+import { useSize } from "../hooks";
 
 const strokeOut = {
   initial: { pathLength: 1, strokeWidth: 400, scale: 1.5 },
@@ -74,6 +74,7 @@ const slideUp = {
 export default function About() {
   const [navId, setNavId] = useState(0);
   const [show, setShow] = useState(false);
+  const size = useSize();
   const nav = [
     {
       id: 0,
@@ -89,7 +90,7 @@ export default function About() {
     },
     {
       id: 3,
-      label: "contact me",
+      label: "socials",
     },
   ];
 
@@ -148,7 +149,7 @@ export default function About() {
                 </div>
                 {navId === 0 && (
                   <motion.div
-                    className="animate__visible absolute top-0 md:top-2 lg:top-10 xl:top-1/4 border-t-2 border-l-2 border-secondary/30 rounded-t-lg px-3 pt-4 lg:pt-20 left-0 w-full h-full bg-primary"
+                    className="animate__visible absolute top-0 md:top-2 lg:top-10 xl:top-1/4 border-t-2 border-l-2 border-secondary/30 rounded-t-lg px-3 pt-4 lg:pt-20 left-0 w-full h-full bg-primary overflow-scroll"
                     initial={{ y: "200%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-200%" }}
@@ -157,7 +158,7 @@ export default function About() {
                       ease: [0.43, 0.13, 0.23, 0.96],
                     }}
                   >
-                    <p className="font-body font-light text-sm lg:text-base 2xl:text-3xl lg:px-4">
+                    <p className="font-body font-light text-sm lg:text-base 2xl:text-3xl lg:px-4 pt-4 pb-8 md:py-0">
                       Robert Gardner is a front-end developer and all-around
                       design enthusiast. He believes in coding best practices,
                       standards and accessibility conscience design, crafting
@@ -166,7 +167,7 @@ export default function About() {
                   </motion.div>
                 )}
               </div>
-              <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative bg-primary lg:border-r-2 border-b-2 border-secondary/20 lg:border-b-none">
+              <div className="h-1/4 md:h-1/2 lg:h-full w-full md:w-1/2 lg:w-1/4 relative bg-primary lg:border-r-2 border-b-2 border-secondary/20 lg:border-b-none overflow-scroll">
                 <div className="initial__visible absolute top-0 left-0 w-full h-full overflow-hidden border-x-2 border-secondary/20">
                   <p className="absolute top-0 uppercase font-showcase font-black lg:-left-1/2 -right-64  -rotate-90 text-9xl text-secondary/10">
                     {nav[1].label}
@@ -227,7 +228,7 @@ export default function About() {
                       href="https://flowcv.com/resume/w186gtk5l2"
                       rel="link"
                       target="_blank"
-                      className="w-full grid place-items-center bg-secondary text-primary font-showcase uppercase lg:py-4 2xl:py-8 2xl:text-3xl "
+                      className="w-full grid place-items-center bg-secondary text-primary font-showcase uppercase py-3 lg:py-4 2xl:py-8 2xl:text-3xl"
                     >
                       Resume
                     </a>
@@ -278,20 +279,70 @@ export default function About() {
       <p className="absolute -bottom-56 -right-52 text-[350px] text-secondary/10 z-0 font-showcase2 font-bold">
         About
       </p>
-      <svg
-        className="absolute w-[150vw] h-[150vh] -top-[50vh] -left-40 overflow-visible rotate-[20deg] stroke-secondary -z-0"
-        viewBox="0 0 1916 741"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <motion.path
-          d="M134.712 276.378C53.826 487.74 -59.2915 763.879 65.7117 695.878C292.713 540.879 508.713 51.5251 606.211 30.8777C737.213 17.3787 317.713 540.879 460.212 720.378C630.709 834.379 873.713 -75.6233 959.211 30.8777C1044.71 137.379 742.209 480.879 818.711 587.878C917.209 664.879 1158.71 -118.123 1254.71 30.8777C1350.71 179.878 1027.21 521.878 1119.21 645.878C1211.21 769.878 1547.21 -132.623 1604.71 30.8777C1662.21 194.378 1456.71 452.378 1549.71 521.878C1642.71 591.378 1905.71 16.8777 1905.71 16.8777"
-          strokeLinecap="round"
-          variants={strokeOut}
-          onAnimationStart={() => setShow(false)}
-          onAnimationComplete={() => setShow(true)}
-        />
-      </svg>
+
+      {size[0] >= 500 ? (
+        <svg
+          className="absolute w-[150vw] h-[150vh] -top-[50vh] -left-40 overflow-visible rotate-[20deg] stroke-secondary -z-0"
+          viewBox="0 0 1916 741"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <motion.path
+            d="M134.712 276.378C53.826 487.74 -59.2915 763.879 65.7117 695.878C292.713 540.879 508.713 51.5251 606.211 30.8777C737.213 17.3787 317.713 540.879 460.212 720.378C630.709 834.379 873.713 -75.6233 959.211 30.8777C1044.71 137.379 742.209 480.879 818.711 587.878C917.209 664.879 1158.71 -118.123 1254.71 30.8777C1350.71 179.878 1027.21 521.878 1119.21 645.878C1211.21 769.878 1547.21 -132.623 1604.71 30.8777C1662.21 194.378 1456.71 452.378 1549.71 521.878C1642.71 591.378 1905.71 16.8777 1905.71 16.8777"
+            strokeLinecap="round"
+            variants={strokeOut}
+            onAnimationStart={() => setShow(false)}
+            onAnimationComplete={() => setShow(true)}
+          />
+        </svg>
+      ) : (
+        <>
+          <motion.div
+            className="absolute inset-0 w-full h-full bg-secondary z-50"
+            initial={{
+              clipPath: "inset(0% 0% 0% 0%)",
+            }}
+            animate={{
+              clipPath: "inset(0% 0% 100% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+                delay: 0.1,
+              },
+            }}
+            exit={{
+              clipPath: "inset(0% 0% 0% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+              },
+            }}
+          />
+          <motion.div
+            className="absolute inset-0 w-full h-full bg-[#111] z-50"
+            initial={{
+              clipPath: "inset(0% 0% 0% 0%)",
+            }}
+            animate={{
+              clipPath: "inset(0% 0% 100% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+              },
+            }}
+            exit={{
+              clipPath: "inset(0% 0% 0% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+                delay: 0.1,
+              },
+            }}
+            onAnimationStart={() => setShow(false)}
+            onAnimationComplete={() => setShow(true)}
+          />
+        </>
+      )}
     </motion.div>
   );
 }

@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function NavMilestones({ project }) {
   const [current, setCurrent] = useState(project.milestones[0]);
   return (
-    <div className="w-full h-[75%] relative mt-0 lg:mt-12">
+    <div className="w-full sm:h-full h-[75%] relative mt-0 lg:mt-12">
       <div className="absolute top-0 left-0 flex flex-col gap-y-12 w-full h-full md:px-0 px-6 lg:px-8 2xl:pr-24">
         {project?.milestones.map((milestone) => (
           <motion.div

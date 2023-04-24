@@ -84,6 +84,7 @@ export default function Project({ inView, setInView }) {
   const [width, height] = useSize();
   const scrollRef = useRef();
   const childRef = useRef();
+  const size = useSize();
 
   function handleLoad(el) {
     el.scrollTo({
@@ -121,7 +122,7 @@ export default function Project({ inView, setInView }) {
 
   return (
     <motion.div
-      className={`absolute top-0 left-0 w-full md:w-[96.5vw] mx-0 md:mx-6 mt-0 lg:mt-6  h-[81.5vh] px-0 overflow-x-hidden border-2 border-secondary/50 overflow-y-hidden`}
+      className={`absolute top-0 left-0 w-full md:w-[96.5vw] mx-0 md:mx-6 mt-0 lg:mt-6  max-h-[81.5svh] px-0 overflow-x-hidden border-2 border-secondary/50 sm:overflow-y-auto md:overflow-y-hidden`}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -132,7 +133,9 @@ export default function Project({ inView, setInView }) {
         {show && (
           <div
             className="w-full h-fit overflow-y-scroll overflow-x-hidden"
-            style={{ height: window.innerHeight * 4 }}
+            style={{
+              height: size[0] > 500 ? window.innerHeight * 4 : "fit-content",
+            }}
             ref={scrollRef}
           >
             <div className="w-screen h-[81.5vh] overflow-x-hidden">
@@ -157,7 +160,7 @@ export default function Project({ inView, setInView }) {
               id="scroller"
               ref={scrollRef}
             >
-              <div className="flex flex-row lg:flex-col gap-x-3 lg:gap-y-4 2xl:gap-y-12 my-12 ml-4 w-full lg:w-1/6 border-r-4 border-secondary/20 2xl:pl-24">
+              <div className="flex flex-row lg:flex-col gap-x-3 lg:gap-y-4 2xl:gap-y-12 my-0 md:my-12 ml-4 w-full lg:w-1/6 border-r-4 border-secondary/20 2xl:pl-24 h-[10svh] items-center md:items-start">
                 {nav.map((item, i) => {
                   const isActive = navItem.link === item.link;
                   return (
@@ -185,28 +188,76 @@ export default function Project({ inView, setInView }) {
                   );
                 })}
               </div>
-              <div className="lg:w-5/6 w-full h-[81.5vh]">
+              <div className="lg:w-5/6 w-full sm:min-h-fit sm:mb-12 md:pb-0 md:h-[81.5vh]">
                 {navItem.element}
               </div>
             </div>
           </div>
         )}
       </div>
-      <svg
-        className="absolute w-[150vw] h-[150vh] -top-[50vh] -left-40 overflow-visible rotate-[20deg] -z-0"
-        viewBox="0 0 1916 741"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ stroke: project?.color }}
-      >
-        <motion.path
-          d="M134.712 276.378C53.826 487.74 -59.2915 763.879 65.7117 695.878C292.713 540.879 508.713 51.5251 606.211 30.8777C737.213 17.3787 317.713 540.879 460.212 720.378C630.709 834.379 873.713 -75.6233 959.211 30.8777C1044.71 137.379 742.209 480.879 818.711 587.878C917.209 664.879 1158.71 -118.123 1254.71 30.8777C1350.71 179.878 1027.21 521.878 1119.21 645.878C1211.21 769.878 1547.21 -132.623 1604.71 30.8777C1662.21 194.378 1456.71 452.378 1549.71 521.878C1642.71 591.378 1905.71 16.8777 1905.71 16.8777"
-          stroke-linecap="round"
-          variants={strokeOut}
-          onAnimationStart={() => setShow(false)}
-          onAnimationComplete={() => setShow(true)}
-        />
-      </svg>
+      {size[0] >= 500 ? (
+        <svg
+          className="absolute w-[150vw] h-[150vh] -top-[50vh] -left-40 overflow-visible rotate-[20deg] stroke-secondary -z-0"
+          viewBox="0 0 1916 741"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <motion.path
+            d="M134.712 276.378C53.826 487.74 -59.2915 763.879 65.7117 695.878C292.713 540.879 508.713 51.5251 606.211 30.8777C737.213 17.3787 317.713 540.879 460.212 720.378C630.709 834.379 873.713 -75.6233 959.211 30.8777C1044.71 137.379 742.209 480.879 818.711 587.878C917.209 664.879 1158.71 -118.123 1254.71 30.8777C1350.71 179.878 1027.21 521.878 1119.21 645.878C1211.21 769.878 1547.21 -132.623 1604.71 30.8777C1662.21 194.378 1456.71 452.378 1549.71 521.878C1642.71 591.378 1905.71 16.8777 1905.71 16.8777"
+            strokeLinecap="round"
+            variants={strokeOut}
+            onAnimationStart={() => setShow(false)}
+            onAnimationComplete={() => setShow(true)}
+          />
+        </svg>
+      ) : (
+        <>
+          <motion.div
+            className="absolute inset-0 w-full h-full bg-secondary z-50"
+            initial={{
+              clipPath: "inset(0% 0% 0% 0%)",
+            }}
+            animate={{
+              clipPath: "inset(0% 0% 100% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+                delay: 0.1,
+              },
+            }}
+            exit={{
+              clipPath: "inset(0% 0% 0% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+              },
+            }}
+          />
+          <motion.div
+            className="absolute inset-0 w-full h-full bg-[#111] z-50"
+            initial={{
+              clipPath: "inset(0% 0% 0% 0%)",
+            }}
+            animate={{
+              clipPath: "inset(0% 0% 100% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+              },
+            }}
+            exit={{
+              clipPath: "inset(0% 0% 0% 0%)",
+              transition: {
+                duration: 1,
+                ease: "easeInOut",
+                delay: 0.1,
+              },
+            }}
+            onAnimationStart={() => setShow(false)}
+            onAnimationComplete={() => setShow(true)}
+          />
+        </>
+      )}
       <p className="absolute -bottom-56 -right-52 text-[350px] text-secondary/10 z-0 font-showcase2 font-bold">
         Projects
       </p>

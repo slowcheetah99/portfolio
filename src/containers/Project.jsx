@@ -197,7 +197,7 @@ export default function Project({ inView, setInView }) {
       </div>
       {size[0] >= 500 ? (
         <svg
-          className="absolute w-[150vw] h-[150vh] -top-[50vh] -left-40 overflow-visible rotate-[20deg] stroke-secondary -z-0"
+          className="absolute w-[150vw] h-[150vh] -top-[50vh] -left-40 overflow-visible rotate-[20deg] stroke-secondary z-50 pointer-events-none"
           viewBox="0 0 1916 741"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

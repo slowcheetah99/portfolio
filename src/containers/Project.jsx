@@ -122,12 +122,11 @@ export default function Project({ inView, setInView }) {
 
   return (
     <motion.div
-      className={`absolute top-0 left-0 w-full md:w-[96.5vw] mx-0 md:mx-6 mt-0 lg:mt-6  max-h-[81.5svh] px-0 overflow-x-hidden border-2 border-secondary/50 sm:overflow-y-auto md:overflow-y-hidden`}
+      className={`absolute top-0 left-0 w-full md:w-[96.5vw] mx-0 md:mx-6 mt-0 lg:mt-6  max-h-[81.5svh] px-0 overflow-x-hidden border-2 border-secondary/50 sm:overflow-y-auto md:overflow-y-hidden bg-primary`}
       initial="initial"
       animate="animate"
       exit="exit"
       // variants={fadeIn}
-      style={{ backgroundColor: project?.background }}
     >
       <div className="relative z-50 w-full h-fit">
         {show && (
